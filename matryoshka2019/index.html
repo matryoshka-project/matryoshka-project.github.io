@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Matryoshka 2019</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link href="../navbar-fixed-top.css" rel="stylesheet">
+  <link href="../custom.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="icon" href="matryoshka_four_dolls.png">
+
+  <style type="text/css">
+.sticker table {
+        border: 1px solid #666;
+        margin: 20px 80px 2px 80px;
+}
+
+table.schedule {
+  max-width: 55em;
+}
+
+table.schedule tr {
+  background-color : #FFF;
+}
+
+table.schedule tr.break {
+  background-color : #FFF;
+}
+
+table.schedule tr.session {
+  background-color : #EEE;
+}
+
+table.schedule td:first-child {
+  width : 7em;
+  vertical-align: top;
+}
+  </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Matryoshka 2019</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#Aim">Aim</a></li>
+      <li><a href="#Venue">Venue</a></li>
+      <li><a href="#Schedule">Schedule</a></li>
+      <li><a href="#Participants">Participants</a></li>
+      <li><a href="#Organizers">Organizers</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="media-left">
+    <a href="../index.html"><img src="../matryoshka_four_dolls.png" class="media-object" style="width:180px" /></a>
+  </div>
+  <div class="media-body">
+    <center>
+    <h1>VeriDis Retreat
+      <br>+<br>
+      <img src="matryoshka2019_logo_480ppi.png" class="media-object" style="width:450px" alt="Matryoshka 2019"/></h1>
+<!--    <h1><font color="#1563b9">Matryoshka 2019</font></h1> -->
+    <p><font size=6>Second European Workshop on<br>Higher-Order Automated Reasoning</font></p>
+    <p><font size=5>11&ndash;14 June 2019, Amsterdam, The Netherlands</font></p>
+    </center>
+  </div>
+  <div class="media-right">
+    <a href="../index.html"><img src="../matryoshka_four_dolls.png" class="media-object" style="width:180px" /></a>
+  </div>
+</div>
+
+<div class="container" id="Aim">
+  <div class="page-header">
+    <h2>Aim</h2>
+  </div>
+
+  <p>The Matryoshka workshop brings together researchers working on automated deductive techniques
+    for higher-order logics (especially simple type theory and dependent type
+    theory). There has been much progress in recent years with the
+    higher-order automatic theorem provers <a
+    href="http://page.mi.fu-berlin.de/lex/leo3/">Leo-III</a> and <a
+    href="http://www.ps.uni-saarland.de/~cebrown/satallax/">Satallax</a>,
+    the <a href="https://leanprover.github.io/">Lean</a> proof assistant,
+    and metaprovers such as <a
+    href="http://cl-informatik.uibk.ac.at/software/hh/">HOLyHammer</a> and <a
+    href="https://isabelle.in.tum.de/dist/doc/sledgehammer.pdf">Sledgehammer</a>.
+
+  <p>With the <a href="../index.html">Matryoshka project</a>, we aim at
+    designing a new generation of higher-order automatic theorem provers based
+    on state-of-the-art first-order provers, including
+    <a href="http://wwwlehre.dhbw-stuttgart.de/~sschulz/E/E.html">E</a>,
+    <a href="http://www.verit-solver.org">veriT</a>, and <a
+    href="http://cvc4.cs.stanford.edu/web/">CVC4</a>, and to integrate them in
+    popular proof assistants. We believe that first-order automatic provers
+    are the best tools available to perform most of the tedious logical work
+    inside proof assistants. We encourage researchers motivated by the same
+    goals to get in touch with us, subscribe to the <a
+    href="http://lists.gforge.inria.fr/mailman/listinfo/matryoshka-devel">matryoshka-devel</a>
+    mailing list, and join forces.
+
+  <p>The workshop is a successor of the LPAR-05 workshop on <a href="https://arxiv.org/abs/cs/0601042">Empirically Successful Automated
+    Reasoning in Higher-Order Logic (ESHOL)</a>, held in Montego Bay, Jamaica.
+    The Matryoshka workshop series is conceived to be a meeting point for the
+    <a href="../index.html#Team">Matryoshka team</a> and colleagues working on
+    the same challenge. It is an informal event. We expect to hold it at least
+    once a year until the project's completion in 2022.
+
+  <p>This year, the workshop joins forces with the <a
+  href="https://team.inria.fr/veridis/">VeriDis</a> group's retreat.
+  The VeriDis project aims to exploit and further develop the advances and
+  integration of interactive and automated theorem proving applied to the area
+  of concurrent and distributed systems. The goal of our project is to assist
+  algorithm and system designers to carry out formally proved developments,
+  where proofs of relevant properties as well as bugs can be found fully
+  automatically.
+
+  <p>
+    Please send an email
+    to
+  <a href="https://members.loria.fr/PFontaine/">Pascal Fontaine</a> and
+  <a href="https://team.inria.fr/veridis/schurr/">Hans-Jörg Schurr</a>
+    if you would like to give a
+    talk, demonstrate a tool, or otherwise participate.
+  </p>
+</div>
+
+<div class="container" id="Venue">
+  <div class="page-header">
+    <h2>Venue</h2>
+  </div>
+
+  <p>
+The workshop will take place from Tuesday the 11 June to Friday the 14
+June at the Vrije Universiteit Amsterdam.
+
+The VU is easily accessible on
+foot from the Amsterdam Zuid station, a short train ride away from Amsterdam
+Airport Schiphol. There are also parking spaces.
+See <a href="https://www.vu.nl/en/about-vu-amsterdam/contact-info-and-route/route-description/index.aspx">How to get to VU Amsterdam</a>
+for details.</p>
+
+<p>
+The workshop will <b>slowly</b> start on 11 June from 13:00 in room 6A04 on the 6th
+floor of the <a href="https://www.vu.nl/nl/over-de-vu/campus/gebouwen/ozw/index.aspx">OZW building</a>. The sessions on Wednesday are in room 7B01 of the
+same building. On Tuesday only the morning session is in room 6A04 of the
+<a href="https://www.vu.nl/nl/over-de-vu/campus/gebouwen/ozw/index.aspx">OZW building</a>. The afternoon session and the session on Friday is in room M623 of
+the <a href="https://www.vu.nl/nl/over-de-vu/campus/gebouwen/wn/index.aspx">W&amp;N building</a>. The workshop ends on Friday the 14 June at 12:30.
+
+</p>&nbsp;
+
+<p><center>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4875.961668163587!2d4.860522834598313!3d52.33449379494486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c60a08665ba063%3A0xb4cc3eccfe174f9b!2sDe+Boelelaan+1109%2C+1081+HV+Amsterdam!5e0!3m2!1sen!2snl!4v1525437597349" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+</center>
+
+<p>&nbsp;
+
+  <p>
+Hotels in Amsterdam can be very expensive. Even the cheapest options often
+cost over 100 euros per night. The neighboring city of Amstelveen has more
+reasonably priced options (e.g., Ibis) and is located close to the VU campus,
+a few stops away by public transportation (tram line 5 or metro line&nbsp;51).
+
+</div>
+
+<div class="container" id="Schedule">
+  <div class="page-header">
+    <h2>Preliminary Schedule</h2>
+  </div>
+
+  <table class="schedule" width=100%>
+    <tr>
+      <td colspan="2">
+        <h4>Tuesday 11 June (Room 6A04, <a href="https://www.vu.nl/nl/over-de-vu/campus/gebouwen/ozw/index.aspx">OZW building</a>)</h4>
+      </td>
+    </tr>
+    <tr class="break"><td>13:00&ndash;15:30</td><td><p><b>Arrival &amp; Welcome</b></p></td></tr>
+    <tr class="break"><td>15:30&ndash;16:00</td><td><p>Coffee break</p></td></tr>
+    <tr class="session"><td></td><td><p>VeriDis Session 1</p></td></tr>
+
+  <tr>
+    <td>16:00&ndash;16:30</td>
+    <td>
+      <p>
+        <b>Integration of Event-B and Distalgo</b><br>
+        Alexis Grall<br>
+        <a data-toggle="collapse" href="#collapseGrall" role="button" aria-expanded="false" aria-controls="collapseGrall">
+          (abstract)
+        </a>
+        <a href="slides/grall-integraton-of-event-b-and-distalgo.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseGrall">
+      Distributed algorithms are known to be hard to design and verify.
+      Refining abstract models into less abstract models has been
+      successfully used to design correct-by-construction distributed
+      algorithms.  In this talk, I will present you a systematic way of
+      transforming Event-B models of distributed algorithm into DistAlgo
+      programs.  The presentation will consist of an illustration of
+      this transformation on an example: the stop-and-wait ARQ.
+      <br />
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>16:30&ndash;17:00</td>
+    <td>
+      <p>
+        <b>SPASS-SATT a CDCL(LA) Solver</b><br>
+        Martin Bromberger<br>
+      <a data-toggle="collapse" href="#collapseBromberger" role="button" aria-expanded="false" aria-controls="collapseBromberger">
+          (abstract)
+        </a>
+       <a href="slides/bromberger-spass-satt.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseBromberger">
+          SPASS-SATT is a CDCL(LA) solver for linear rational and linear
+          mixed/integerarithmetic. This system description explains its specific
+          features: fast cube tests for integer solvability, bounding
+          transformations for unbounded problems, close interaction between the
+          SAT solver and the theory solver,efficient data structures,
+          andsmall-clause-normal-form generation. SPASS-SATT is currently one of
+          thestrongest systems on the respective SMT-LIB benchmarks.
+      <br />
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>17:00&ndash;17:30</td>
+    <td>
+      <p>
+        <b>Statistical Verification of Distributed Programs
+        Within SimGrid</b><br>
+        Yann Duplouy<br>
+      <a data-toggle="collapse" href="#collapseDuplouy" role="button" aria-expanded="false" aria-controls="collapseDuplouy">
+          (abstract)
+        </a>
+        <a href="slides/duplouy-statistical-verification-of-distributed-programs.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseDuplouy">
+          SimGrid is a tool for the simulation of distributed programs, designed
+          to be reproducible and requiring a full knowledge of the distributed
+          system. However, in real-life scenarios we only have an average
+          guarantee, such as the availability. The goal of this work in progress
+          is to enhance SimGrid with stochastic features, allowing the description
+          of such systems, and then to implement a statistical model-checker in
+          order to estimate performance indices for the distributed program.
+          <br>
+      </p>
+    </td>
+  </tr>
+
+  <tr><td>17:30&ndash;18:00</td><td><p><b>Discussion</b></p></td></tr>
+  <tr><td>18:30&ndash;20:30<td>Group dinner at <a href="https://www.wagamama.nl/en/restaurants/zuidplein">Wagamama</a> at Zuidplein 12
+
+  <tr></tr>
+  <tr>
+    <td colspan="2">
+      <h4>Wednesday 12 June (Room 7B01, <a href="https://www.vu.nl/nl/over-de-vu/campus/gebouwen/ozw/index.aspx">OZW building</a>)</h4>
+    </td>
+  </tr>
+
+  <tr class="session"><td></td><td><p>VeriDis Session 2</p></td></tr>
+  <tr>
+    <td>9:00&ndash;9:30</td>
+    <td>
+      <p>
+        <b>Termination of Triangular Integer Loops is Decidable</b><br>
+        Florian Frohn<br>
+        <a data-toggle="collapse" href="#collapseFroh" role="button" aria-expanded="false" aria-controls="collapseFroh">
+          (abstract)
+        </a>
+        <a href="https://ffrohn.github.io/slides/linear-termination/slides.html">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseFroh">
+          We consider the problem whether termination of affine integer loops is
+          decidable. Since Tiwari conjectured decidability in 2004, only special
+          cases have been solved. We complement this work by proving decidability
+          for the case that the update matrix is triangular.
+      <br />
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>9:30&ndash;10:00</td>
+    <td>
+      <p>
+        <b>Algorithms for Zero-Dimensional Polynomial Systems</b><br>
+        Hamid Rahkooy<br>
+        <a href="slides/rahkooy-0-dim-comp.pdf">(slides)</a>
+      <!--  <a data-toggle="collapse" href="#collapseFroh" role="button" aria-expanded="false" aria-controls="collapseFroh">
+          (abstract)
+        </a>
+      </p>
+      <p class="collapse" id="collapseFroh">
+      <br />-->
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>10:00&ndash;10:30</td>
+    <td>
+      <p>
+        <b>SCL &ndash; Clause Learning from Simple Models</b><br>
+        Alberto Fiori<br>
+      <!--  <a data-toggle="collapse" href="#collapseFroh" role="button" aria-expanded="false" aria-controls="collapseFroh">
+          (abstract)
+        </a>
+      </p>
+      <p class="collapse" id="collapseFroh">
+      <br />-->
+      </p>
+    </td>
+  </tr>
+  <tr class="break"><td>10:30&ndash;11:00</td><td><p>Coffee break</p></td></tr>
+  <tr class="session"><td></td><td><p>VeriDis Session 3</p></td></tr>
+  <tr>
+    <td>11:00&ndash;11:30</td>
+    <td>
+      <p>
+        <b>HO&pi; in Coq</b><br>
+        Sergue&iuml; Lenglet<br>
+        <a href="slides/lenglet-hopi-in-coq.pdf">(slides)</a>
+      <!--  <a data-toggle="collapse" href="#collapseGrall" role="button" aria-expanded="false" aria-controls="collapseGrall">
+          (abstract)
+        </a>
+      </p>
+      <p class="collapse" id="collapseGrall">
+      <br />-->
+      </p>
+    </td>
+  </tr>
+  <tr><td>11:30&ndash;12:00</td><td><p><b>Discussion</b></p></td></tr>
+  <tr class="break"><td>12:30&ndash;14:00</td><td><p>Group lunch at <a href="https://www.debosbaan.nl">Grand Caf&eacute; De Bosbaan</a> at Bosbaan 4</p></td></tr>
+  <tr class="session"><td></td><td><p>VeriDis Session 4</p></td></tr>
+
+  <tr>
+    <td>14:30&ndash;15:15</td>
+    <td>
+      <p>
+        <b>Encoding Challenges for Hard Problems</b><br>
+        Marijn Heule<br>
+      <a data-toggle="collapse" href="#collapseHeule" role="button" aria-expanded="false" aria-controls="collapseHeule">
+          (abstract)
+        </a>
+      <a href="slides/heule-encoding-challenges.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseHeule">
+          Automated reasoning tools have becomes very powerful in the last two
+          decades. To solve a given problem using such tools, it
+          must be encoded into a representation that is suitable for automated
+          reasoning. Our ability to solve the problem depends heavily on the
+          quality of the encoding.
+            <br>
+          In this talk we discuss some progress and challenges to construct a
+          high-quality encoding for two long-standing open problems: efficient
+          matrix multiplication and the Collatz conjecture. We propose to encode
+          both problems into propositional logic. We weaken the matrix
+          multiplication problem to ensure a much more compact representation.
+          For the Collatz conjecture, which is a halting problem and therefore
+          not in NP, we search for a ranking function using term rewriting
+          termination techniques.
+      <br />
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td>15:15&ndash;15:45</td>
+    <td>
+      <p>
+        <b>Making TLA+ model checking symbolic</b><br>
+        Joint work with Jure Kukovec and Thanh Hai Tran (TU Wien, Austria)<br>
+        Igor Konnov<br>
+      <a data-toggle="collapse" href="#collapseKonnov" role="button" aria-expanded="false" aria-controls="collapseKonnov">
+          (abstract)
+        </a>
+      <a href="slides/konnov-tla-model-checking.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseKonnov">
+      TLA+ is a language for formal specification of all kinds of computer systems.
+      System designers use this language to specify concurrent, distributed, and
+      fault-tolerant protocols, which are traditionally presented in pseudo-code.
+      TLA+ is extremely concise yet expressive: The language primitives include
+      Booleans, integers, functions, tuples, records, sequences, and sets thereof,
+      which can be also nested.  This is probably why the only model checker for TLA+
+      (called TLC) relies on explicit enumeration of values and states.
+      <br/>
+      In this talk, we present a first symbolic model checker for TLA+. Like TLC,
+      it assumes that all specification parameters are fixed and all states are
+      finite structures. Unlike TLC, our model checker translates the underlying
+      transition relation into quantifier-free SMT constraints, which allows us to
+      exploit the power of SMT solvers.
+      <br />
+      </p>
+    </td>
+  </tr>
+
+  <tr class="break"><td>16:00&ndash;16:30</td><td>Coffee break</td></tr>
+  <tr>
+    <td>16:30&ndash;17:00</td>
+    <td>
+      <p>
+        <b>Reconstructing veriT proofs in Isabelle/HOL</b><br>
+        Hans-Jörg Schurr<br>
+        Joint work with Mathias Fleury<br>
+        <a data-toggle="collapse" href="#collapseSchurr" role="button" aria-expanded="false" aria-controls="collapseSchurr">
+          (abstract)
+        </a>
+        <a href="slides/schurr-reconstructing-verit-proofs.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseSchurr">
+          Automated theorem provers are now commonly used within interactive
+          theorem provers to discharge an increasingly large number of
+          proof obligations.  To maintain the trustworthiness of a proof,
+          the automatically found proof must be verified inside the proof
+          assistant. We present here a reconstruction procedure in the proof assistant
+          Isabelle/HOL for proofs generated by
+          the satisfiability modulo theories solver veriT
+          which is part of the smt tactic.<br>
+          We describe the architecture of our improved reconstruction method and
+          the challenges we faced in designing it.  Our experiments show that
+          the veriT-powered smt tactic is regularly suggested by Sledgehammer
+          as the fastest method to automatically solve proof goals.
+      <br />
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>17:00&ndash;17:30</td>
+    <td>
+      <p>
+        <b>Efficient Validation of FOLID Cyclic Induction Reasoning</b><br>
+        Sorin Stratulat<br>
+        <a data-toggle="collapse" href="#collapseStratulat" role="button" aria-expanded="false" aria-controls="collapseStratulat">
+          (abstract)
+        </a>
+        <a href="slides/stratulat-floid-cyclic-induction-reasoning.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseStratulat">
+        Checking the soundness of the cyclic induction reasoning for first-order
+        logic with inductive definitions (FOLID) may be costly; the standard
+        checking method is decidable but based on a doubly exponential
+        complement operation for Büchi automata. In this talk, I will present
+        a semi-decidable polynomial method whose most expensive steps recall
+        the comparisons with multiset path orderings. In practice, it has been
+        integrated in the Cyclist prover and successfully checked all the proofs
+        generated with the standard method and included in its distribution.
+        <br>
+        FOLID cyclic proofs may also be hard to certify. Our method helps to
+        represent the cyclic induction reasoning as being well-founded, where
+        the ordering constraints are automatically built from the analysis
+        of the proofs. Hence, it creates a bridge between the two induction
+        reasoning methods and opens the perspective to use the certification
+        methods adapted for well-founded induction proofs.
+      <br />
+      </p>
+    </td>
+  </tr>  <tr class="break"><td>17:30&ndash;19:30</td><td>Free time to explore the city</td></tr>
+  <tr class="break"><td>19:30&ndash;21:30</td><td>Group dinner at <a href="https://www.samasebo.nl">Sama Sebo</a> at P.C. Hooftstraat 27</td></tr>
+
+  <tr></tr>
+  <tr>
+    <td colspan="2">
+      <h4>Thursday 13 June morning (Room 6A04, <a href="https://www.vu.nl/nl/over-de-vu/campus/gebouwen/ozw/index.aspx">OZW building</a>)</h4>
+    </td>
+  </tr>
+  <tr class="session"><td></td><td><p>VeriDis+Matryoshka Joint Session 1</p></td></tr>
+
+  <tr>
+    <td>9:30&ndash;10:00</td>
+    <td>
+      <p>
+        <b>Extending an Isabelle Formalisation of CDCL to Optimising CDCL</b><br>
+        Mathias Fleury<br>
+        <a data-toggle="collapse" href="#collapseFleury" role="button" aria-expanded="false" aria-controls="collapseFleury">
+          (abstract)
+        </a>
+        <a href="slides/fleury-ocdcl.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseFleury">
+          I have recently extended my formalisation of CDCL such that it can find
+          an optimal model that minimise the weight of its literals. This calculus
+          was formalised in Isabelle, but it is not able to find optimal partial
+          models. Therefore, we used an encoding that reduces the search for an
+          optimal partial model to the search for an optimal total model.
+      <br />
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td>10:00&ndash;10:30</td>
+    <td>
+      <p>
+        <b>Machine Learning for Instance Selection in SMT Solving</b><br>
+        Daniel El Ouraoui<br>
+        <a data-toggle="collapse" href="#collapseOuraoui" role="button" aria-expanded="false" aria-controls="collapseOuraoui">
+          (abstract)
+        </a>
+        <a href="slides/elouraoui-machine-learning-for-instance-selection.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseOuraoui">
+        SMT solvers are among the most suited tools for quantifier-free
+        first-order problems, and their support for quantified formulas has been
+        improving in recent years.  To instantiate quantifiers, they rely on
+        heuristic techniques that generate thousands of instances, most of  them
+        useless.   We  propose  to  apply  state-of-the-art  machine  learning
+        techniques  as classifiers for instances on top of the instantiation
+        process.  We show that such techniquescan indeed decrease the number of
+        generated useless instances.  We envision that this couldlead to more
+        efficient SMT solving for quantified problems.
+      <br />
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>10:30&ndash;10:45</td>
+    <td>
+      <p>
+        <b>Leveraging Automatic Deduction for Verification</b><br>
+        Antoine Defourné<br>
+        <a data-toggle="collapse" href="#collapseDefourne" role="button" aria-expanded="false" aria-controls="collapseDefourne">
+          (abstract)
+        </a>
+        <a href="slides/defourne-leveraging-automatic-deduction.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseDefourne">
+        TLA+ is a specification language based on set theory. Unlike most
+        formal languages, TLA+ is untyped, a design principle mainly motivated
+        by flexibility, convenience and expressiveness. TLA+'s interactive
+        prover, TLAPS, relies on back-end provers to treat proof obligations. In
+        previous work, an encoding of TLA+'s set theory into first-order logic
+        was defined in order to provide support for SMT solvers. In this
+        presentation, we will motivate the extension of this work to
+        higher-order solvers.
+      <br/>
+      </p>
+    </td>
+  </tr>
+
+  <tr class="break"><td>10:45&ndash;11:15</td><td><p>Coffee break</p></td></tr>
+
+  <tr class="break"><td>12:00&ndash;14:00</td><td>Lunch on our own (cafeteria, <a href="https://zuidas.loetje.nl/?lang=en">Loetje</a>, ...)</td></tr>
+
+  <tr></tr>
+  <tr>
+    <td colspan="2">
+      <h4>Thursday 13 June afternoon (Room M623, <a href="https://www.vu.nl/nl/over-de-vu/campus/gebouwen/wn/index.aspx">W&amp;N building</a>)</h4>
+  </td></tr>
+  <tr class="session"><td></td><td><p>Matryoshka Session 1</p></td></tr>
+  <tr>
+    <td>14:00&ndash;14:45</td>
+    <td>
+      <p>
+        <b>Superposition with Lambdas</b><br>
+        Alexander Bentkamp <br>
+        Joint work with Jasmin Blanchette, Sophie
+        Tourret, Petar Vukmirović, and Uwe Waldmann<br>
+      <a data-toggle="collapse" href="#collapseBentkamp" role="button" aria-expanded="false" aria-controls="collapseBentkamp">
+          (abstract)</a>
+        <a href="slides/bentkamp-superposition-with-lambdas.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseBentkamp">
+          We designed a complete superposition calculus for a clausal
+          fragment of extensional polymorphic higher-order logic that includes
+          anonymous functions but excludes Booleans. We implemented the calculus
+          in the Zipperposition prover and evaluated it on TPTP and Isabelle
+          benchmarks.
+      <br/>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>14:45&ndash;15:15</td>
+    <td>
+      <p>
+        <b>Normalizing casts inside expressions</b><br>
+        Paul-Nicolas Madelaine<br>
+      <a data-toggle="collapse" href="#collapseMadelaine" role="button" aria-expanded="false" aria-controls="collapseMadelaine">
+          (abstract)</a>
+      </p>
+      <p class="collapse" id="collapseMadelaine">
+        The lean elaborator implements a coercion mechanism, which
+        automatically adds casts inside expressions. This can be as
+        frustrating as it is usefull, since users sometimes end up
+        struggling with very simple statements because they have to
+        manually move these casts around.  In this talk I will present
+        my work on norm_cast, a light-weight and extensible tactic
+        aimed at making this process more intuitive.
+      <br/>
+      </p>
+    </td>
+  </tr>
+  <tr class="break"><td>15:30&ndash;16:00</td><td><p>Coffee break</p></td></tr>
+  <tr class="session"><td></td><td><p>Matryoshka Session 2</p></td></tr>
+  <tr>
+    <td>16:00&ndash;16:30</td>
+    <td>
+      <p>
+        <b>Practical higher order unification</b><br>
+        Petar Vukmirović<br>
+      <a data-toggle="collapse" href="#collapseVukmirovic" role="button" aria-expanded="false" aria-controls="collapseVukmirovic">
+          (abstract)</a>
+      <a href="https://docs.google.com/presentation/d/1DnXepYMV16UpSu0pnYcfcnbNR7Q8gWTFYctjkeaXAt8/edit?usp=sharing">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseVukmirovic">
+        Higher order unification has usually been regarded as one of
+        the algorithms whose search space is hard to control. In this
+        talk, I will present some ways in which the unifier search can
+        be kept under control. Our initial experiments show significant
+        improvements compared to commonly used algorithms.
+      <br/>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>16:30&ndash;17:00</td>
+    <td>
+      <p>
+        <b>Superposition with Combinators</b><br>
+        Ahmed Bhayat<br>
+      <a data-toggle="collapse" href="#collapseBhayat" role="button" aria-expanded="false" aria-controls="collapseBhayat">
+          (abstract)</a>
+      <a href="slides/bhayat-superposition-with-combinators.pptx">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseBhayat">
+          I present ongoing research on the use of a non-monotonic ordering that
+          orients combinator axiom left-to-right to parametise the superposition
+          calculus. Building on work carried out by the Matryoshka team, I explore
+          tuning the calculus's side conditions to maintain completeness.
+      <br/>
+      </p>
+    </td>
+  </tr>
+
+  <tr></tr>
+  <tr>
+    <td colspan="2">
+      <h4>Friday 14 June (Room M623, <a href="https://www.vu.nl/nl/over-de-vu/campus/gebouwen/wn/index.aspx">W&amp;N building</a>)</h4>
+    </td>
+  </tr>
+  <tr class="session"><td></td><td><p>Matryoshka Session 3</p></td></tr>
+  <tr>
+    <td>9:00&ndash;9:30</td>
+    <td>
+      <p>
+        <b>Continued Fractions in Lean - A Newbie’s Adventure</b><br>
+        Kevin Kappelmann<br>
+      <a data-toggle="collapse" href="#collapseKappelman" role="button" aria-expanded="false" aria-controls="collapseKappelman">
+          (abstract)</a>
+      <a href="slides/kappelmann-lean-continued-fractions.pdf">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseKappelman">
+          This talk is about the journey of a Lean newbie formalising basic
+          theorems about continued fractions. Like every interesting journey, also
+          mine had ups and downs. I will talk about both of them, the lessons I
+          learnt, and the Lean features I am missing.
+      <br/>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>9:30&ndash;10:00</td>
+    <td>
+      <p>
+        <b>Playing with booleans in a superposition prover </b><br>
+        Visa Nummelin &amp; Petar Vukmirović<br>
+      <a data-toggle="collapse" href="#collapseNummelin" role="button" aria-expanded="false" aria-controls="collapseNummelin">
+          (abstract)</a>
+      <a href="https://docs.google.com/presentation/d/1AKktSFnsY1vi-NPmz05DvaUf6BU-yeRhV3jaFnU8kfc/edit?usp=sharing">(slides)</a>
+      </p>
+      <p class="collapse" id="collapseNummelin">
+        Remarkable work has recently been done to make first-order
+        superposition based provers to support boolean subterms. In
+        this talk we review several ways to support booleans. We also
+        address other aspects of higher order reasoning with booleans
+        such as axiom of choice and primitive substitutions. Our
+        evaluation shows promising results.
+      <br/>
+      </p>
+    </td>
+  </tr>
+  <tr class="break"><td>10:30&ndash;11:00</td><td><p>Coffee break</p></td></tr>
+  <tr class="session"><td></td><td><p>Matryoshka Session 4</p></td></tr>
+  <tr><td>11:00&ndash;12:00</td><td><p><b>Discussion</b></p></td></tr>
+  <tr class="break"><td>12:00&ndash;14:00</td><td>Lunch on our own (cafeteria, <a href="https://zuidas.loetje.nl/?lang=en">Loetje</a>, ...)</td></tr>
+
+  </table>
+
+</div>
+
+<div class="container" id="Participants">
+  <div class="page-header">
+    <h2>Participants</h2>
+  </div>
+<p>
+  <a href="http://www.cs.vu.nl/~abp290/">Alexander Bentkamp</a>* (VU Amsterdam)
+<br>
+  <a href="https://www.research.manchester.ac.uk/portal/ahmed.bhayat.html">Ahmed Bhayat</a>* (University of Manchester)
+<br>
+  <a href="TODO">Manon Blanc</a> (ENS Paris-Saclay and Inria Nancy)
+<br>
+  <a href="http://www.cs.vu.nl/~jbe248/">Jasmin Blanchette</a> (VU Amsterdam)
+<br>
+  <a href="https://www.mpi-inf.mpg.de/departments/automation-of-logic/people/martin-bromberger/">Martin Bromberger</a>* (MPII Saarbrücken)
+<br>
+  <a href="https://members.loria.fr/HCirstea/">Horatiu Cirstea</a> (Inria Nancy)
+<br>
+  <a href="https://nl.linkedin.com/in/antoine-defourné-90795b106">Antoine Defourné</a>* (Inria Nancy)
+<br>
+  <a href="https://fr.linkedin.com/in/yannduplouy">Yann Duplouy</a>* (Inria Nancy)
+<br>
+  <a href="https://www.linkedin.com/in/daniel-el-ouraoui-9a1ba1142/">Daniel El Ouraoui</a>* (U. Lorraine and Inria Nancy)
+<br>
+  <a href="https://www.mpi-inf.mpg.de/departments/automation-of-logic/people/alberto-fiori/">Alberto Fiori</a>* (MPII Saarbrücken)
+<br>
+  <a href="https://www.mpi-inf.mpg.de/departments/automation-of-logic/people/mathias-fleury/">Mathias Fleury</a>* (MPII Saarbrücken)
+<br>
+  <a href="https://members.loria.fr/PFontaine/">Pascal Fontaine</a> (U. Lorraine)
+<br>
+  <a href="https://www.mpi-inf.mpg.de/departments/automation-of-logic/people/florian-frohn/">Florian Frohn</a>* (MPII Saarbrücken)
+<br>
+  <a href="https://team.inria.fr/veridis/team-members/">Alexis Grall</a>* (Inria Nancy)
+<br>
+  <a href="http://www.cs.utexas.edu/users/marijn/">Marijn Heule</a>* (U. Texas at Austin)
+<br>
+  <a href="https://kappelmann.me">Kevin Kappelmann</a>* (VU Amsterdam)
+<br>
+  <a href="https://team.inria.fr/veridis/konnov/">Igor Konnov</a>* (Inria Nancy)
+<br>
+  <a href="https://members.loria.fr/SLenglet/">Sergue&iuml; Lenglet</a>* (Inria Nancy)
+<br>
+  <a href="https://github.com/pnmdln">Paul-Nicolas Madelaine</a>* (ENS Paris &amp; VU Amsterdam)
+<br>
+  <a href="https://members.loria.fr/SMerz/">Stephan Merz</a> (Inria Nancy)
+<br>
+  <a href="https://research.vu.nl/en/persons/visa-nummelin">Visa Nummelin</a>* (VU Amsterdam)
+<br>
+  <a href="TODO">Hamid Rahkooy</a>* (Inria Nancy)
+<br>
+  <a href="https://team.inria.fr/veridis/schurr/">Hans-Jörg Schurr</a>* (U. Lorraine and Inria Nancy)
+<br>
+  <a href="https://members.loria.fr/SStratulat/">Sorin Stratulat</a>* (U. Lorraine)
+<br>
+  <a href="https://www.mpi-inf.mpg.de/departments/automation-of-logic/people/sophie-tourret/">Sophie Tourret</a> (MPII Saarbrücken)
+<br>
+  <a href="https://github.com/petarvukmirovic">Petar Vukmirovi&cacute;</a>* (VU Amsterdam)
+<br>
+  <a href="https://www.mpi-inf.mpg.de/departments/automation-of-logic/people/uwe-waldmann/">Uwe Waldmann</a> (MPII Saarbrücken)
+<br>
+  <a href="https://www.mpi-inf.mpg.de/departments/automation-of-logic/people/christoph-weidenbach/">Christoph Weidenbach</a> (MPII Saarbrücken)
+<p>* speakers
+
+
+
+</div>
+
+<div class="container" id="Organizers">
+  <div class="page-header">
+    <h2>Organization</h2>
+  </div>
+
+  <a href="http://www.cs.vu.nl/~abp290/">Alexander Bentkamp</a> (VU Amsterdam)
+<br>
+  <a href="http://www.cs.vu.nl/~jbe248/">Jasmin Blanchette</a> (VU Amsterdam)
+<br>
+  <a href="https://members.loria.fr/PFontaine/">Pascal Fontaine</a> (U. Lorraine)
+<br>
+  <a href="https://team.inria.fr/veridis/schurr/">Hans-Jörg Schurr</a> (U. Lorraine and Inria Nancy)
+<br>
+  <a href="https://github.com/petarvukmirovic">Petar Vukmirovi&cacute;</a> (VU Amsterdam)
+
+<br>
+<br>
+<br>
+
+  <p>
+    <b>Acknowledgment:</b>
+    <!--We want to thank Pascal Fontaine, Mojca Lovrencak,
+  and Caroline Waij for helping with the organization.-->
+  This workshop is partially supported by the ERC Starting Grant 2016 <a
+  href="../index.html">Matryoshka</a> (grant agreement No.
+  <a href="http://cordis.europa.eu/project/rcn/207590_en.html">713999</a>)
+  and by the <a href="https://www.nwo.nl/financiering/onze-financieringsinstrumenten/ew/incidentele-steun/incidentele-steun.html">NWO incidentele steun</a> scheme.
+  We kindly ask participants to mention the support from the ERC and the NWO
+  in publications or in other kinds of scientific output that directly follows
+  from the workshop. (The NWO would also like to receive a copy of the relevant
+  publications.)
+
+  <br>
+  <br>
+  <br>
+    <div class="sticker">
+      <table>
+        <tbody><tr>
+          <td>&nbsp;
+          <td><img src="http://ec.europa.eu/research/participants/docs/h2020-funding-guide/imgs/eu-flag.jpg" width="50px" border="0" name="European Union flag"></td>
+          <td>&nbsp;&nbsp;&nbsp;
+          <td>This project has received funding from the European Union's Horizon 2020 research and innovation program
+            under grant agreement No. 713999.&nbsp;&nbsp;</td>
+        </tr>
+      </tbody></table>
+    </div>
+
+  <br>
+  <br>
+  <br>
+
+</div>
+
+</body>
+
+</html>
