@@ -1,0 +1,104 @@
+@import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300");
+@import url(https://fonts.googleapis.com/css?family=Archivo+Narrow);
+@import url(https://fonts.googleapis.com/css?family=Archivo+Black);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+/* body { */
+/*     padding-top: 50px; */
+/*     padding-bottom: 20px; */
+/* } */
+
+body, textarea {
+    background-color: #fcfcfc;
+    color: #212124;
+}
+
+.navbar {
+    font-size: 17px;
+}
+
+.my-navbar-brand {
+    color: navy;
+    font-family: "Shadows Into Light";
+    font-weight: normal;
+    font-size: 120%;
+}
+
+h1, h2, h3, h4 {
+    /* font-family: "Archivo Narrow"; */
+}
+
+h1 {
+    font-size: 300%;
+}
+
+
+h3 {
+    font-size: 150%;
+}
+
+h4 {
+    font-size: 120%;
+}
+
+tt {
+    font-family: "Roboto Mono";
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+    .avatar {
+        float:right;
+        width:214px;
+        height:256px;
+        margin-bottom:25px;
+    }
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .avatar {
+        float:right;
+        width:214px;
+        height:256px;
+        margin-bottom:10px;
+    }
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+    .avatar {
+        float:right;
+        width:133px;
+        height:160px;
+        margin-bottom:10px;
+    }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+    .avatar {
+        float:right;
+        width:106px;
+        height:128px;
+        margin-bottom:10px;
+    }
+
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+    .avatar {
+        float:right;
+        width:92px;
+        height:110px;
+    }
+
+}
+
+th, td {
+    padding: 10px;
+}

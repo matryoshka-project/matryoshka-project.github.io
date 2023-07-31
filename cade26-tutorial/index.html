@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Certified Functional (Co)programming with Isabelle/HOL</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link href="navbar-fixed-top.css" rel="stylesheet">
+  <link href="custom.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="icon" href="matryoshka_four_dolls.png">
+
+  <style type="text/css">
+.sticker table {
+        border: 1px solid #666;
+        margin: 20px 80px 2px 80px;
+}
+  </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Tutorial</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#Description">Description</a></li>
+      <li><a href="#Schedule">Schedule</a></li>
+      <li><a href="#Organizers">Organizers</a></li>
+      <li><a href="#Resources">Resources</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="media-body">
+    <center>
+    <h1>Certified Functional (Co)programming with&nbsp;Isabelle/HOL</h1>
+    <p>Tutorial colocated with <a href="http://www.cade-26.info">CADE-26</a>, 7 August 2017, Gothenburg, Sweden</p>
+    </center>
+  </div>
+</div>
+
+<div class="container" id="Description">
+  <div class="page-header">
+    <h2>Description</h2>
+  </div>
+
+<p>
+Over the past five years, the organizers have developed programming
+capabilities for finite and infinite (lazy) data structures in the
+Isabelle/HOL proof assistant, using the foundational approach characteristic
+of provers based on higher-order logic (HOL, also called simple type theory).
+</p>
+
+<p>
+In contrast with the <a
+href="http://sketis.net/2015/isabelle-tutorial-at-cade-25-2">Isabelle tutorial
+at CADE-25</a>, the focus will be on verified programming using the subset of
+Isabelle/HOL that corresponds to a <b>typed functional programming language</b>. The
+focus will be on mechanisms specific to Isabelle/HOL, notably:
+<ol>
+<li>reaching a balance between guaranteed
+termination/productivity and expressiveness;</li>
+<li>mixing recursion with
+corecursion soundly; and</li>
+<li>obtaining compositional proof methods that match
+the program definitions.</li>
+</ol>
+</p>
+
+<p>
+The tutorial will target researchers with no or little prior experience with
+Isabelle or any other proof assistant, but with some experience with a typed
+functional programming language (e.g., Haskell, OCaml, Scala, Standard ML).
+</p>
+
+<p>
+The tutorial will contain several hands-on exercises. We expect the attendants
+to bring laptops (with at least 2 cores and 4 GB memory) and have Isabelle
+installed before the start of the tutorial.
+Isabelle is <a href="http://isabelle.in.tum.de">freely available for Linux,
+Mac, and Windows</a>. We will be using Isabelle2016-1.
+</p>
+</div>
+
+<div class="container" id="Schedule">
+  <div class="page-header">
+    <h2>Tentative Schedule</h2>
+  </div>
+
+<table>
+<tr><td>09:00&ndash;10:00&nbsp;&nbsp;&nbsp;&nbsp;</td><td><b>Isabelle/jEdit and Higher-Order Logic</b></td>
+<tr><td>10:00&ndash;10:30</td><td><i>Coffee Break</i></td>
+<tr><td>10:30&ndash;11:15</td><td><b>Datatypes and Recursion</b></td>
+<tr><td>11:15&ndash;12:00</td><td><b>Codatatypes</b></td>
+<tr><td>12:00&ndash;14:00</td><td><i>Lunch Break</i></td>
+<tr><td>14:00&ndash;15:00</td><td><b>Primitive Corecursion</b></td>
+<tr><td>15:00&ndash;15:30</td><td><i>Coffee Break</i></td>
+<tr><td>15:30&ndash;16:15</td><td><b>Corecursion up to Friends</b></td>
+<tr><td>16:10&ndash;17:00</td><td><b>Mixed Recursion/Corecursion</b></td>
+</table>
+</div>
+
+<div class="container" id="Organizers">
+  <div class="page-header">
+    <h2>Organizers</h2>
+  </div>
+
+<p>
+The tutorial will be organized by
+<ul>
+<li><a href="http://www.cs.vu.nl/~jbe248/">Jasmin Blanchette</a>, Vrije Universiteit Amsterdam</li>
+<li><a href="http://www.infsec.ethz.ch/people/andreloc.html">Andreas Lochbihler</a>, ETH Z&uuml;rich</li>
+<li><a href="http://andreipopescu.uk">Andrei Popescu</a>, Middlesex University London</li>
+<li><a href="https://www21.in.tum.de/~traytel/">Dmitriy Traytel</a>, ETH Z&uuml;rich</li>
+</ul>
+</p>
+</div>
+
+<div class="container" id="Resources">
+  <div class="page-header">
+    <h2>Resources</h2>
+  </div>
+
+<ul>
+<li><a href="slides.pdf">Slides</a></li>
+<li>Theory files:
+  <ul>
+  <li><a href="Higher_Order_Logic.thy">Higher_Order_Logic.thy</a>
+  <li><a href="Isar.thy">Isar.thy</a>
+  <li><a href="Programming.thy">Programming.thy</a>
+  <li><a href="Programming_Sol.thy">Programming_Sol.thy</a><br>
+  <li><a href="Coprogramming.thy">Coprogramming.thy</a>
+  <li><a href="Coprogramming_Sol.thy">Coprogramming_Sol.thy</a><br>
+  <li><a href="Friends.thy">Friends.thy</a>
+  <li><a href="Friends_Presentation.thy">Friends_Presentation.thy</a>
+  <li><a href="Friends_Sol.thy">Friends_Sol.thy</a><br>
+  <li><a href="Language.thy">Language.thy</a>
+  <li><a href="Language_Sol.thy">Language_Sol.thy</a><br>
+  </ul>
+</ul>
+
+<ul>
+<li><a href="http://isabelle.in.tum.de">Main Isabelle page</a> (including option to download)</li>
+<li>Official documentation:
+  <ul>
+  <li>Getting started: <a href="http://isabelle.in.tum.de/dist/Isabelle2016-1/doc/prog-prove.pdf">Programming and Proving in Isabelle/HOL</a></li>
+  <li><a href="http://isabelle.in.tum.de/dist/Isabelle2016-1/doc/functions.pdf">Defining Recursive Functions in Isabelle/HOL</a></li>
+  <li><a href="http://isabelle.in.tum.de/dist/Isabelle2016-1/doc/datatypes.pdf">Defining (Co)datatypes and Primitively (Co)recursive Functions in Isabelle/HOL</a></li>
+  <li><a href="https://isabelle.in.tum.de/dist/Isabelle2016-1/doc/corec.pdf">Defining Nonprimitively (Co)recursive Functions in Isabelle/HOL</a></li>
+</ul>
+</li>
+<li>Papers about (co)programming in Isabelle:
+  <ul>
+  <li><a href="http://www.cs.vu.nl/~jbe248/lics2012-codat.pdf">Foundational, Compositional (Co)datatypes for Higher-Order Logic</a> (LICS 2012)</li>
+  <li><a href="http://www.cs.vu.nl/~jbe248/co-data-impl.pdf">Truly Modular (Co)datatypes for Isabelle/HOL</a> (ITP 2014)</li>
+  <li><a href="http://www.cs.vu.nl/~jbe248/wit.pdf">Witnessing (Co)datatypes</a> (ESOP 2015)</li>
+  <li><a href="http://www.cs.vu.nl/~jbe248/fouco.pdf">Foundational Extensible Corecursion</a> (ICFP 2016)</li>
+  <li><a href="http://www.cs.vu.nl/~jbe248/compl2.pdf">Soundness and Completeness Proofs by Coinductive Methods</a> (<em>J. Autom. Reasoning</em> 2017)</li>
+  <li><a href="http://www.cs.vu.nl/~jbe248/amico.pdf">Friends with Benefits: Implementing Corecursion in Foundational Proof Assistants</a> (ESOP 2017)</li>
+  <li><a href="http://matryoshka.gforge.inria.fr/pubs/nonuniform_paper.pdf">Foundational Nonuniform (Co)datatypes for Higher-Order Logic</a> (LICS 2017)</li>
+  <li><a href="http://www.cs.vu.nl/~jbe248/nested_multisets.pdf">Nested Multisets, Hereditary Multisets, and Syntactic Ordinals in Isabelle/HOL</a> (draft)</li>
+  </ul>
+</li>
+</ul>
+</div>
+
+<br><br><br><br><br>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html><head>
+    <title>Scalable Fine-Grained Proofs for Formula Processing</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="author" content="Haniel Barbosa, Jasmin Christian Blanchette, Pascal Fontaine" />
+    <meta name="description" content="Experimental data" />
+</head>
+<style type="text/css">body{margin:40px
+    auto;;line-height:1.6;font-size:18px;color:#444;padding:0
+    100px}h1,h2,h3{line-height:1.2}</style>
+<body>
+    <h1>Scalable Fine-Grained Proofs for Formula Processing</h1>
+
+    <h2>
+        <a href="https://members.loria.fr/HBarbosa/">Haniel Barbosa</a>,
+        <a href="https://people.mpi-inf.mpg.de/~jblanche//">Jasmin Christian Blanchette</a>,
+        and <a href="https://members.loria.fr/PFontaine/">Pascal Fontaine</a>
+    </h2>
+
+    <p>We provide here the binary, options and experimental data for our <a href="../processing_paper.pdf">CADE paper</a> and the companion <a href="https://hal.inria.fr/hal-01526841">report</a>.</p>
+
+    <h2><a name="solver">Setup</a></h2>
+
+    <p>
+        The tarball containing the source code of veriT used in our experiments is available <a href="veriT.tar.gz">here</a>. The command line parameters of veriT used in each of the configurations described in the paper are:
+        <ul>
+            <li> <font style="font-variant: small-caps">Basic</font>: "<tt>--old-processing --disable-sym --disable-simp --disable-unit-simp --disable-unit-subst-simp --disable-ackermann --disable-bclause</tt>"</li>
+            <li> <font style="font-variant: small-caps">Extended</font>: "<tt>--old-processing --disable-sym --disable-unit-simp --disable-unit-subst-simp --disable-ackermann --disable-bclause</tt>"</li>
+            <li> <font style="font-variant: small-caps">Complete</font>: "<tt>--old-processing</tt>"</li>
+            <li><font style="font-variant: small-caps">with proofs</font>: "<tt>--proof=/dev/null --proof-with-sharing</tt>"</li>
+            <li><font style="font-variant: small-caps">with new code</font>: remove parameter "<tt>--old-processing</tt>"</li>
+        </ul></li>
+        </ul>
+
+        <p>The benchmarks can be found <a href="https://clc-gitlab.cs.uiowa.edu:2443/explore/projects?sort=name_asc/">here</a>, divided according to the categories in SMT-LIB. </p>
+
+        <p>
+            Our experiments were conducted on servers
+            equipped with two Intel Xeon E5-2630 v3 processors, with eight
+            cores per processor, and 126 GB of memory.
+            The time limit was set to 30 s.
+        </p>
+
+        <h2><a name="results">Results</a></h2>
+        <p>
+            The experimental data for each configuration:
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/qf_complete_noproof_new.txt"><font style="font-variant: small-caps">qf_complete_no-proofs_new</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/qf_complete_noproof_old.txt"><font style="font-variant: small-caps">qf_complete_no-proofs_old</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/qf_extended_noproof_new.txt"><font style="font-variant: small-caps">qf_extended_no-proofs_new</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/qf_extended_noproof_old.txt"><font style="font-variant: small-caps">qf_extended_no-proofs_old</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/qf_basic_noproof_new.txt"><font style="font-variant: small-caps">qf_basic_no-proofs_new</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/qf_basic_noproof_old.txt"><font style="font-variant: small-caps">qf_basic_no-proofs_old</font></a></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/complete_noproof_new.txt"><font style="font-variant: small-caps">complete_no-proofs_new</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/complete_noproof_old.txt"><font style="font-variant: small-caps">complete_no-proofs_old</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/extended_noproof_new.txt"><font style="font-variant: small-caps">extended_no-proofs_new</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/extended_noproof_old.txt"><font style="font-variant: small-caps">extended_no-proofs_old</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/basic_noproof_new.txt"><font style="font-variant: small-caps">basic_no-proofs_new</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/basic_noproof_old.txt"><font style="font-variant: small-caps">basic_no-proofs_old</font></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/qf_extended_proof_new.txt"><font style="font-variant: small-caps">qf_extended_proofs_new</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/qf_basic_proof_new.txt"><font style="font-variant: small-caps">qf_basic_proofs_new</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/qf_basic_proof_old.txt"><font style="font-variant: small-caps">qf_basic_proofs_old</font></a></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/extended_proof_new.txt"><font style="font-variant: small-caps">extended_proofs_new</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/basic_proof_new.txt"><font style="font-variant: small-caps">basic_proofs_new</font></a></li>
+                                <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/exps/basic_proof_old.txt"><font style="font-variant: small-caps">basic_proofs_old</font></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+        <!-- <p>Some detailed comparisons between the different configurations presented in the paper are linked below:</p>
+             <ul>
+             <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/comps/qf_basic_proof_old-vs-qf_basic_proof_new/compare.html"><font style="font-variant: small-caps">qf_basic_proofs_old vs qf_basic_proofs-new</font></a></li>
+             <li><a href="https://members.loria.fr/HBarbosa/papers/2017-proofs/comps/basic_proof_old-vs-basic_proof_new/compare.html"><font style="font-variant: small-caps">basic_proofs_old vs basic_proofs-new</font></a></li>
+             </ul> -->
+</body>
+</html>

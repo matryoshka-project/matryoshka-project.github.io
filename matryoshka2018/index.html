@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Matryoshka 2018</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link href="../navbar-fixed-top.css" rel="stylesheet">
+  <link href="../custom.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="icon" href="matryoshka_four_dolls.png">
+
+  <style type="text/css">
+.sticker table {
+        border: 1px solid #666;
+        margin: 20px 80px 2px 80px;
+}
+
+table.schedule {
+  max-width: 55em;
+}
+
+table.schedule tr {
+  background-color : #FFF;
+}
+
+table.schedule tr.break {
+  background-color : #FFF;
+}
+
+table.schedule tr.session {
+  background-color : #EEE;
+}
+
+table.schedule td:first-child {
+  width : 7em;
+  vertical-align: top;
+}
+  </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Matryoshka 2018</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#Aim">Aim</a></li>
+      <li><a href="#Venue">Venue</a></li>
+      <li><a href="#Program">Program</a></li>
+      <li><a href="#Participants">Participants</a></li>
+      <li><a href="#Organizers">Organizers</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="media-left">
+    <a href="../index.html"><img src="../matryoshka_four_dolls.png" class="media-object" style="width:180px" /></a>
+  </div>
+  <div class="media-body">
+    <center>
+    <h1><img src="matryoshka2018_logo_480ppi.png" class="media-object" style="width:450px" alt="Matryoshka 2018"/></h1>
+<!--    <h1><font color="#1563b9">Matryoshka 2018</font></h1> -->
+    <p><font size=6><b>First European Workshop on<br>Higher-Order Automated Reasoning</b></font></p>
+    <p><font size=5>25&ndash;27 June 2018, Amsterdam, The Netherlands
+      <br>Co-located with <a href="../wait2018/index.html"><b>WAIT 2018</b></a></font></p>
+    </center>
+  </div>
+  <div class="media-right">
+    <a href="../index.html"><img src="../matryoshka_four_dolls.png" class="media-object" style="width:180px" /></a>
+  </div>
+</div>
+
+<div class="container" id="Aim">
+  <div class="page-header">
+    <h2>Aim</h2>
+  </div>
+
+  <p>This workshop brings together researchers working on automated deductive techniques
+    for higher-order logics (especially simple type theory and dependent type
+    theory). There has been much progress in recent years with the
+    higher-order automatic theorem provers <a
+    href="http://page.mi.fu-berlin.de/lex/leo3/">Leo-III</a> and <a
+    href="http://www.ps.uni-saarland.de/~cebrown/satallax/">Satallax</a>,
+    the <a href="https://leanprover.github.io/">Lean</a> proof assistant,
+    and metaprovers such as <a
+    href="http://cl-informatik.uibk.ac.at/software/hh/">HOLyHammer</a> and <a
+    href="https://isabelle.in.tum.de/dist/doc/sledgehammer.pdf">Sledgehammer</a>.
+
+  <p>With the <a href="../index.html">Matryoshka project</a>, we aim at
+    designing a new generation of higher-order automatic theorem provers based
+    on state-of-the-art first-order provers, including
+    <a href="http://wwwlehre.dhbw-stuttgart.de/~sschulz/E/E.html">E</a>,
+    <a href="http://www.verit-solver.org">veriT</a>, and <a
+    href="http://cvc4.cs.stanford.edu/web/">CVC4</a>, and to integrate them in
+    popular proof assistants. We believe that first-order automatic provers
+    are the best tools available to perform most of the tedious logical work
+    inside proof assistants. We encourage researchers motivated by the same
+    goals to get in touch with us, subscribe to the <a
+    href="http://lists.gforge.inria.fr/mailman/listinfo/matryoshka-devel">matryoshka-devel</a>
+    mailing list, and join forces.
+
+  <p>The workshop is a successor of the LPAR-05 workshop on <a href="https://arxiv.org/abs/cs/0601042">Empirically Successful Automated
+    Reasoning in Higher-Order Logic (ESHOL)</a>, held in Montego Bay, Jamaica.
+    The Matryoshka workshop series is conceived to be a meeting point for the
+    <a href="../index.html#Team">Matryoshka team</a> and colleagues working on
+    the same challenge. It is an informal event. We expect to hold it at least
+    once a year until the project's completion in 2022.
+
+  <p>
+    Please send an email
+    to the <a href="#Organizers">organizers</a> if you would like to give a
+    talk, demonstrate a tool, or otherwise participate.
+  </p>
+</div>
+
+<div class="container" id="Venue">
+  <div class="page-header">
+    <h2>Venue</h2>
+  </div>
+
+  <p>
+The workshop will take place on 25, 26, and 27 June 2018 on the 6th floor of the OZW
+building of the Vrije Universiteit Amsterdam, room 6A04 (Tuesday) and 6B04
+(Monday and Wednesday). The VU is easily accessible on
+foot from the Amsterdam Zuid station, a short train ride away from Amsterdam
+Airport Schiphol. There are also parking spaces.
+See <a href="https://www.vu.nl/en/about-vu-amsterdam/contact-info-and-route/route-description/index.aspx">How to get to VU Amsterdam</a>
+for details. The workshop will start on 25 June at 14:00 and end on
+27 June at 15:00.
+
+<p>&nbsp;
+
+<p><center>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4875.961668163587!2d4.860522834598313!3d52.33449379494486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c60a08665ba063%3A0xb4cc3eccfe174f9b!2sDe+Boelelaan+1109%2C+1081+HV+Amsterdam!5e0!3m2!1sen!2snl!4v1525437597349" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+</center>
+
+<p>&nbsp;
+
+<p>
+Matryoshka 2018 will take place the same week as the <a href="../wait2018/index.html">Fourth
+Workshop on Automated Inductive Theorem Proving (WAIT 2018)</a>.
+
+  <p>
+Hotels in Amsterdam can be very expensive. Even the cheapest options often
+cost over 100 euros per night. The neighboring city of Amstelveen has more
+reasonably priced options (e.g., Ibis) and is located close to the VU campus,
+a few stops away by public transportation (tram line 5 or metro line&nbsp;51).
+
+</div>
+
+<div class="container" id="Program">
+  <div class="page-header">
+    <h2>Program</h2>
+  </div>
+
+  <table class="schedule">
+    <tr>
+      <td colspan="2">
+        <h4>Monday 25 June (Room 6B04)<br>&nbsp;</h4>
+      </td>
+    </tr>
+
+    <tr class="session"><td></td><td><p>Session 1 (chair: Jasmin Blanchette)</p></td></tr>
+
+      <tr class="break"><td>14:00 &ndash; 14:05</td><td><p><b>Welcome</b></p></td></tr>
+
+      <tr>
+        <td>14:05 &ndash; 14:40</td>
+        <td>
+          <p>
+            <b>Encoding First-Order Horn Formulas in Equational Logic</b><br>
+            Nicholas Smallbone<br>
+            Joint work with Koen Claessen<br>
+            <a data-toggle="collapse" href="#collapseSmallbone" role="button" aria-expanded="false" aria-controls="collapseSmallbone">
+              (abstract)
+            </a>
+            <a href="slides/Matryoskha-2018-Smallbone-Encoding-First-Order-Horn-Formulas-in-Equational-Logic.pdf">(slides)<a>
+          </p>
+          <p class="collapse" id="collapseSmallbone">
+          I will show you how to translate a first-order Horn problem into a unit
+          equality problem. This sounds like an excellent way to make the problem harder
+          to solve, but in fact is quite useful, because it turns any equational theorem
+          prover into a Horn prover. The technique (perhaps unsurprisingly) works well
+          for Horn problems that involve heavy equational reasoning.
+          <br />
+          </p>
+        </td>
+      </tr>
+
+      <td>14:40 &ndash; 15:10</td>
+      <td>
+        <p>
+          <b>Superposition for Lambda-Free Higher-Order Logic</b><br>
+          Alexander Bentkamp<br>
+          Joint work with Jasmin Blanchette, Simon Cruanes, and Uwe Waldmann<br>
+          <a data-toggle="collapse" href="#collapseBentkamp" role="button" aria-expanded="false" aria-controls="collapseBentkamp">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Bentkamp-Superposition-for-Lambda-Free-Higher-Order-Logic.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseBentkamp">
+        I will present refutationally complete superposition calculi for
+        &lambda;-free higher-order logic, a
+        formalism that allows partial application and applied variables.
+        We implemented the calculi in the
+        Zipperposition prover and evaluated them on TPTP benchmarks. They appear
+        promising as a stepping stone towards complete, efficient automatic theorem
+        provers for full higher-order logic.
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>15:10 &ndash; 15:35</td>
+      <td>
+        <p>
+          <b>Yet Another Nice and Accurate Interactive Theorem Prover</b><br>
+          Freek Wiedijk<br>
+          <a data-toggle="collapse" href="#collapseWiedijk" role="button" aria-expanded="false" aria-controls="collapseWiedijk">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Wiedijk-Yet-Another-Nice-and-Accurate-Interactive-Theorem-Prover.pdf">(slides)<a>
+        </p>
+        <p class="collapse" id="collapseWiedijk">
+        I will outline plans for an interactive theorem prover
+        that I would like to develop.  It will be based on FOL
+        (with schemes) and ZFC, it will be typed with (soft)
+        dependent types, and for this reason it will have to take
+        partiality seriously.  It might become slow and hard to use,
+        but I still would like to explore this corner of the design
+        space of interactive theorem proving.
+        </p>
+      </td>
+    </tr>
+
+    <tr class="break"><td></td><td><p><b>Coffee break</b></p></td></tr>
+
+    <tr class="session"><td></td><td><p>Session 2 (chair: Nicholas Smallbone)</p></td></tr>
+
+    <tr>
+      <td>16:00 &ndash; 16:45</td>
+      <td>
+        <p>
+          <b>The Higher-Order Prover Leo-III</b><br>
+          Alexander Steen<br>
+          Joint work with Christoph Benzmüller and Max Wisniewski<br>
+          <a data-toggle="collapse" href="#collapseSteen" role="button" aria-expanded="false" aria-controls="collapseSteen">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Steen-The-Higher-Order-Prover-Leo-III.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseSteen">
+        The automated theorem prover Leo-III for classical higher-order logic with
+        Henkin semantics and choice is presented. Leo-III is based on extensional
+        higher-order paramodulation and accepts every common TPTP dialect (FOF, TFF,
+        THF), including their recent extensions to rank-1 polymorphism (TF1, TH1).
+        In addition, the prover natively supports reasoning in almost every normal
+        higher-order modal logic.
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>16:45 &ndash; 17:15</td>
+      <td>
+        <p>
+          <b>Pragmatic Higher-Order Theorem Proving via Embedding a Lambda Calculus in
+          First-Order Logic Utilising De Bruijn Indices</b><br>
+          Ahmed Bhayat<br>
+          Joint work with Giles Reger and Andrei Voronkov<br>
+          <a data-toggle="collapse" href="#collapseBhayat" role="button" aria-expanded="false" aria-controls="collapseBhayat">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Bhayat-Pragmatic-Higher-Order-Theorem-Proving.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseBhayat">
+        As pointed out by Gilles Dowek, it is possible to treat higher-order logic as
+        a first-order theory by converting lambda expressions to De Bruijn notation
+        and treating the lambda as a unary function. We have implemented this
+        translation and begun to explore its potential for proving theorems in an
+        unspecified fragment of higher-order logic. The translation allows for the
+        heuristically guided use of higher-order reasoning steps, which is discussed.
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>17:15 &ndash; 17:45</td>
+      <td>
+        <p>
+          <b>Extending a Brainiac Prover to Lambda-Free Higher-Order Logic</b><br>
+          Petar Vukmirovi&cacute;<br>
+          Joint work with Jasmin Blanchette, Simon Cruanes, and Stephan Schulz<br>
+          <a data-toggle="collapse" href="#collapseVukmirovic" role="button" aria-expanded="false" aria-controls="collapseVukmirovic">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Vukmirovi-Extending-a-Brainiac-Prover-to-Lambda-Free-Higher-Order-Logic.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseVukmirovic">
+        Instead of developing a new higher-order prover from the ground up, we
+        propose to start with a state-of-the-art superposition-based prover,
+        E, and gradually enrich it with higher-order features. In this talk, I
+        will explain how to extend the prover's core data structures,
+        algorithms, and heuristics to &lambda;-free higher-order logic. Our
+        extension clearly outperforms the traditional encoding-based approach.
+         </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <h4><br>Tuesday 26 June (Room 6A04)<br>&nbsp;</h4>
+      </td>
+    </tr>
+
+    <tr class="session"><td></td><td><p>Session 3 (chair: Uwe Waldmann)</p></td></tr>
+
+    <tr>
+      <td>09:00 &ndash; 09:45</td>
+      <td>
+        <p><b>SGGS: Conflict-Driven First-Order Reasoning</b><br>
+        Maria Paola Bonacina<br>
+        Joint work with David A. Plaisted<br>
+          <a data-toggle="collapse" href="#collapseBonacina" role="button" aria-expanded="false" aria-controls="collapseBonacina">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Bonacina-SGGS.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseBonacina">
+        Conflict-driven reasoning procedures search simultaneously for a model
+        or a refutation of the input formula by proposing candidate models,
+        deriving new formulae implied by the input, detecting conflicts
+        between model and formulae, and repairing the model by conflict-driven
+        inferences. SGGS, for Semantically-Guided Goal-Sensitive reasoning,
+        extends this paradigm from decision procedures for satisfiability
+        (e.g., SAT, SMT, SMA) to semidecision procedures for first-order
+        theorem proving. SGGS uses a sequence of constrained clauses with
+        selected literals to represent a partial model. A given interpretation
+        provides semantic guidance and makes first-order clausal propagation
+        possible. SGGS extends the partial model by instance generation and
+        literal selection. When a conflict arises, SGGS explains it by
+        conflict-driven resolution and solves it by fixing the model. SGGS is
+        refutationally complete and model-complete in the limit.
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <p>09:45 &ndash; 10:30</p>
+      </td>
+      <td>
+        <p>
+          <b>Revisiting Enumerative Instantiation</b><br>
+          Pascal Fontaine<br>
+          Joint work with Andrew Reynolds and Haniel Barbosa<br>
+          <a data-toggle="collapse" href="#collapseFontaine" role="button" aria-expanded="false" aria-controls="collapseFontaine">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Fontaine-Revisiting-Enumerative-Instantiation.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseFontaine">
+        <!--Formal methods applications often rely on SMT solvers to automatically
+        discharge proof obligations.  -->SMT solvers handle quantified formulas using
+        incomplete heuristic techniques like E-matching, and often resort to
+        model-based quantifier instantiation (MBQI) when these techniques fail.
+        We revisit enumerative instantiation, which considers
+        instantiations based on exhaustive enumeration of ground terms.
+        Enumerative instantiation can supplement other
+        instantiation techniques and be a viable alternative to MBQI for valid
+        proof obligations.  We first present a stronger Herbrand Theorem, better
+        suited as a basis for the instantiation loop used in SMT solvers; it
+        furthermore requires considering less instances than classical Herbrand
+        instantiation.  Based on this<!-- result-->, we present different strategies for
+        combining enumerative instantiation with other instantiation techniques<!-- in an
+        effective way-->.  The experimental evaluation shows that the implementation of
+        these new techniques in CVC4 leads to significant improvements
+        in several benchmark libraries<!--, including many stemming from verification
+        efforts-->.
+        </p>
+      </td>
+    </tr>
+
+    <tr class="break"><td></td><td><p><b>Coffee break</b></p></td></tr>
+
+    <tr class="session"><td></td><td><p>Session 4 (chair: Maria Paola Bonacina)</p></td></tr>
+
+    <tr>
+      <td>11:00 &ndash; 11:45</td>
+      <td>
+        <p>
+          <b>Higher-Order SMT Solving (Work in Progress)</b><br>
+          Daniel El Ouraoui<br>
+          Joint work with Haniel Barbosa, Andrew Reynolds, Pascal Fontaine, and Cesare Tinelli<br>
+          <a data-toggle="collapse" href="#collapseElOuraoui" role="button" aria-expanded="false" aria-controls="collapseElOuraoui">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-ElOuraoui-HO-SMT-wip.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseElOuraoui">
+        Satisfiability modulo theories (SMT) solvers have throughout the years
+        been able to cope with increasingly expressive formulas, from ground
+        logics to full first-order logic modulo theories. Nevertheless,
+        higher-order logic within SMT (HOSMT) is still little explored. In
+        this presentation, we discuss how to extend SMT solvers to natively
+        support higher-order reasoning without compromising their performances
+        on FO problems.
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>11:45 &ndash; 12:30</td>
+      <td>
+        <p>
+          <b>Investigating Higher-Order Simplification for SMT Solving (Work in Progress)</b><br>
+          Hans-Jörg Schurr<br>
+          Joint work with with Pascal Fontaine and Jasmin Blanchette<br>
+          <a data-toggle="collapse" href="#collapseSchurr" role="button" aria-expanded="false" aria-controls="collapseSchurr">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Schurr-Investigating-Higher-Order-Simplification-for-SMT-Solving-Work-in-Progress.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseSchurr">
+          During proof construction with interactive systems such as Isabelle/HOL
+          simplification tactics provide a straightforward and basic form of
+          automatization. These tactics rewrite a proof goal with a user defined
+          set of rewrite rules. In the case of Isabelle/HOL the simplifier is
+          often able to  solve proof goals which Sledgehammer can not. In this
+          talk I discuss how Isabelle's simplifier works, how simplification is
+          currently applied in SMT solvers, and possible work to extend this.
+        </p>
+      </td>
+    </tr>
+
+    <tr class="break"><td></td><td><p><b>Lunch break</b></p></td></tr>
+
+    <tr class="session"><td></td><td><p>Session 5 (chair: Pascal Fontaine)</p></td></tr>
+
+    <tr>
+      <td>14:00 &ndash; 14:45</td>
+      <td>
+        <p>
+          <b>Unification with Abstraction and Theory Instantiation in Saturation-Based Reasoning</b><br>
+          Giles Reger<br>
+          Joint work with Martin Suda and Andrei Voronkov<br>
+          <a data-toggle="collapse" href="#collapseReger" role="button" aria-expanded="false" aria-controls="collapseReger">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Reger-Unification-with-Abstraction-and-Theory-Instantiation-in-Saturation-Based-Reasoning.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseReger">
+        In Vampire we’ve been looking at combining reasoning with quantifiers and reasoning with theories for a few
+        years. In this talk I will present our most recent work which is a different way of utilising SMT solvers in
+        first-order provers (different from the approaches taken by e.g. AVATAR modulo theories and hierarchic
+        superposition). This consists of two ideas. The first idea is to find useful instances of a clause where
+        some theory part becomes false, e.g. X > 0 &or; p(X) has an instance p(1), by passing the negation of the pure
+        theory literals to a SMT solver. The second idea is to extend unification to produce `theory constraints`
+        under which inferences may happen. Such constraints can be handled by the previously introduced instantiation
+        method. This is our first step in this direction and we have many more steps planned.
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>14:45 &ndash; 15:30</td>
+      <td>
+        <p>
+          <b>A Verified SAT Solver with Watched Literals Using Imperative HOL</b><br>
+          Mathias Fleury<br>
+          Joint work with Jasmin Blanchette and Peter Lammich<br>
+          <a data-toggle="collapse" href="#collapseFleury" role="button" aria-expanded="false" aria-controls="collapseFleury">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Fleury-A-Verified-SAT-Solver.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseFleury">
+        Based on our earlier formalization of conflict-driven clause learning (CDCL)
+        in Isabelle/HOL, we refine the CDCL calculus to add a crucial optimization:
+        two watched literals. We formalize the data structure and the invariants. Then
+        we refine the calculus to obtain an executable SAT solver. Through a chain of
+        refinements carried out using the Isabelle Refinement Framework, we target
+        Imperative HOL and extract imperative Standard ML code. Although our solver
+        is not competitive with the state of the art, it offers acceptable performance
+        for some applications, and heuristics can be added to improve it further.
+        </p>
+      </td>
+    </tr>
+
+    <tr class="break"><td></td><td><p><b>Coffee break</b></p></td></tr>
+
+    <tr class="session"><td></td><td><p>Session 6 (chair: Robert Lewis)</p></td></tr>
+
+    <tr>
+      <td>16:00 &ndash; 16:45</td>
+      <td>
+        <p>
+          <b>SLD-Resolution Reduction of Second-Order Horn Fragments</b><br>
+          Sophie Tourret<br>
+          Joint work with Andrew Cropper<br>
+          <a data-toggle="collapse" href="#collapseTourret" role="button" aria-expanded="false" aria-controls="collapseTourret">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Tourret-SLD.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseTourret">The derivation reduction
+        problem for SLD-resolution is the problem of finding a minimal finite
+        subset S of a theory T such that T can be generated from S using
+        SLD-resolution. I will present the results of our study on the
+        reducibility of various second-order Horn theories with particular
+        applications in Inductive Logic Programming.</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>16:45 &ndash; 17:15</td>
+      <td>
+        <p>
+          <b>Formalizing Bachmair and Ganzinger's Ordered Resolution Prover</b><br>
+          Jasmin Blanchette<br>
+          Joint work with Anders Schlichtkrull, Dmitriy Traytel, and Uwe Waldmann<br>
+          <a data-toggle="collapse" href="#collapseBlanchette" role="button" aria-expanded="false" aria-controls="collapseBlanchette">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Blanchette-Formalizing-Bachmair-and-Ganzinger-Ordered-Resolution-Prover.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseBlanchette">I will present a formalization of the first half of Bachmair and Ganzinger's
+        chapter on resolution theorem proving in Isabelle/HOL, culminating with a
+        refutationally complete first-order prover based on ordered resolution with
+        literal selection. We developed general infrastructure and methodology that can
+        form the basis of completeness proofs for related calculi, including
+        superposition. Our work clarifies several of the fine points in the chapter's
+        text.
+        </p>
+      </td>
+    </tr>
+
+    <br>
+    <tr class="break"><td>19:30 &ndash; </td><td><p><b>Workshop dinner</b><br><a href="http://samasebo.nl">Sama Sebo</a> (Indonesian cuisine)</p></td></tr>
+
+    <tr>
+      <td colspan="2">
+        <h4><br>Wednesday 27 June (Room 6B04)<br>&nbsp;</h4>
+      </td>
+    </tr>
+
+    <tr class="session"><td></td><td><p>Session 7 (chair: Sophie Tourret)</p></td></tr>
+
+    <tr>
+      <td><p>09:00 &ndash; 09:45</p></td>
+      <td>
+        <p>
+          <b>Dependently Typed Superposition in Lean</b><br>
+          Gabriel Ebner<br>
+          <a data-toggle="collapse" href="#collapseEbner" role="button" aria-expanded="false" aria-controls="collapseEbner">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Ebner-Dependently-Typed-Superposition-in-Lean.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseEbner">
+        In Lean 3, tactics are defined in the object language and can be
+        efficiently executed using a bytecode interpreter.  The <tt>super</tt> tactic
+        implements a superposition prover for Lean with Avatar-like splitting.
+        The whole prover, including a toy SAT solver, is written in Lean without
+        any changes to the C++ code.  The prover supports dependent types, and
+        produces intuitionistic proofs in many cases.</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td><p>09:45 &ndash; 10:30</p></td>
+      <td>
+        <p>
+          <b>A Heuristic Method for Formally Verifying Real Inequalities</b><br>
+          Robert Lewis<br>
+          Joint work with Jeremy Avigad<br>
+          <a data-toggle="collapse" href="#collapseLewis" role="button" aria-expanded="false" aria-controls="collapseLewis">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Lewis-A-Heuristic-Method-for-Formally-Verifying-Real-Inequalities.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseLewis">
+          We describe a general method for verifying inequalities between
+          real-valued expressions, especially the kinds of straightforward
+          inferences that arise in interactive theorem proving. In contrast to
+          approaches that aim to be complete with respect to a particular
+          language or class of formulas, our method is heuristic and establishes
+          claims that require heterogeneous forms of reasoning. It is also able
+          to create proof "sketches" or "explanations" that can be inspected by
+          the user. Our method is implemented in Lean, using its metaprogramming
+          framework.
+        </p>
+      </td>
+    </tr>
+
+    <tr class="break"><td></td><td><p><b>Coffee break</b></p></td></tr>
+
+    <tr class="session"><td></td><td><p>Session 8 (chair: Alexander Bentkamp)</p></td></tr>
+
+    <tr>
+      <td><p>11:00 &ndash; 11:30</p></td>
+      <td>
+        <p>
+          <b>Generalising the One-Point Rule</b><br>
+          Johannes H&ouml;lzl<br>
+          Joint work with Pablo Le H&eacute;naff<br>
+          <a data-toggle="collapse" href="#collapseHoelzl" role="button" aria-expanded="false" aria-controls="collapseHoelzl">
+            (abstract)
+          </a>
+          <a href="slides/Matryoskha-2018-Hoelzl-Generalising-the-One-Point-Rule.pdf">(slides)</a>
+        </p>
+        <p class="collapse" id="collapseHoelzl">
+          The point-rule "(&#x2203;x, p x &#x2227; x = t) &#x2194; p t" is a
+          simple but powerful rule implemented in Isabelle's
+          simplifier. For implementing it in Lean, I want the generalisations
+          "monotone p &#x2192; (&#x2203;x, p x &#x2227; x &#x2264; t) &#x2194;
+          p t". Also I thought about applying Galois connections to <em>focus</em> the
+          variable.
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td><p>11:30 &ndash; 12:00</p></td>
+      <td>
+        <p><b>Redundancy and Subsumption: The Generic Way</b><br>
+          Uwe Waldmann<br>
+          <a data-toggle="collapse" href="#collapseWaldmann" role="button" aria-expanded="false" aria-controls="collapseWaldmann">
+            (abstract)
+          </a>
+          <!--<a href="slides/Matryoskha-2018--.pdf">(slides)</a>-->
+        </p>
+        <p class="collapse" id="collapseWaldmann">
+          Deletion of subsumed clauses is a fundamental operation in any
+          saturation-based theorem prover, but its treatment in formal
+          presentations of proof calculi is usually clumsy. The main reason
+          for this is the fact that in general deletion is permitted only for
+          redundant clauses, but using a standard notion of redundancy,
+          subsumed clauses are not necessarily redundant. We show that any
+          redundancy criterion that is obtained by lifting a ground redundancy
+          criterion to general formulas and inferences can be extended to
+          a redundancy criterion that also permits the deletion of subsumed
+          clauses. We prove this in a fully abstract framework that can not
+          only be applied to ordered resolution or standard superposition, but
+          also to constraint superposition, theory superposition, hierarchic
+          superposition, or higher-order superposition. We use our result
+          to give an alternative proof of the refutational completeness of
+          Bachmair and Ganzinger's resolution prover RP.
+        </p>
+      </td>
+    </tr>
+
+    <tr class="break"><td></td><td><p><b>Lunch break</b></p></td></tr>
+
+    <tr class="session"><td></td><td><p>Session 9</p></td></tr>
+
+    <tr>
+      <td><p>13:30 &ndash; 15:00</p></td>
+      <td><p><b>Discussion</b></p></td>
+    </tr>
+
+    <tr class="break"><td></td><td><p><b>Coffee break</b></p></td></tr>
+  </table>
+
+</div>
+
+<div class="container" id="Participants">
+  <div class="page-header">
+    <h2>Participants</h2>
+  </div>
+
+<p>
+  <a href="http://www.cs.vu.nl/~abp290/">Alexander Bentkamp</a>* (VU Amsterdam)
+<br>
+  <a href="https://www.researchgate.net/profile/Ahmed_Bhayat4">Ahmed Bhayat</a>* (U. Manchester)
+<br>
+  <a href="http://www.cs.vu.nl/~jbe248/">Jasmin Blanchette</a>* (VU Amsterdam)
+<br>
+  <a href="http://profs.sci.univr.it/~bonacina/">Maria Paola Bonacina</a>* (U. Verona)
+<br>
+  <a href="http://www.few.vu.nl/~sdn249/">Sander Dahmen</a> (VU Amsterdam)
+<br>
+  <a href="https://martin.desharnais.me/">Martin Desharnais</a> (LMU M&uuml;nchen)
+<br>
+  <a href="https://gebner.org/">Gabriel Ebner</a>* (TU Wien)
+<br>
+  <a href="https://www.linkedin.com/in/daniel-el-ouraoui-9a1ba1142/">Daniel El Ouraoui</a>* (U. Lorraine and Inria Nancy)
+<br>
+  <a href="https://www.mpi-inf.mpg.de/departments/automation-of-logic/people/mathias-fleury/">Mathias Fleury</a>* (MPII Saarbrücken)
+<br>
+  <a href="https://members.loria.fr/PFontaine/">Pascal Fontaine</a>* (U. Lorraine)
+<br>
+  <a href="https://www.cs.utexas.edu/~shigoel/">Shilpi Goel</a> (U. Texas Austin)
+<br>
+  <a href="http://www.hansdieterhiep.nl">Hans-Dieter Hiep</a> (VU Amsterdam)
+<br>
+  <a href="http://www.cs.utexas.edu/users/marijn/">Marijn Heule</a> (U. Texas Austin)
+<br>
+  <a href="http://www.cs.vu.nl/~jhl890/">Johannes H&ouml;lzl</a>* (VU Amsterdam)
+<br>
+  <a href="https://research.vu.nl/en/persons/joey-van-langen">Joey van Langen</a> (VU Amsterdam)
+<br>
+  <a href="https://research.vu.nl/en/persons/pablo-le-henaff">Pablo Le H&eacute;naff</a> (&Eacute;cole Polytechnique Paris)
+<br>
+  <a href="http://robertylewis.com/">Robert Y. Lewis</a>* (VU Amsterdam)
+<!--<br>
+  <a href="http://andreipopescu.uk/">Andrei Popescu</a> (Middlesex U.)-->
+<br>
+  <a href="https://www.linkedin.com/in/casper-putz-573131100/">Casper Putz</a> (VU Amsterdam)
+<br>
+  <a href="http://www.cs.man.ac.uk/~regerg/">Giles Reger</a>* (U. Manchester)
+<br>
+  <a href="https://www.logic.at/staff/riener/">Martin Riener</a> (U. Manchester)
+<br>
+  <a href="http://www.cse.chalmers.se/~simrob/">Simon Robillard</a> (Chalmers Gothenburg)
+<br>
+  <a href="http://schurr.at">Hans-Jörg Schurr</a>* (U. Lorraine and Inria Nancy)
+<br>
+  <a href="http://www.cse.chalmers.se/~nicsma/">Nicholas Smallbone</a>* (Chalmers Gothenburg)
+<br>
+  <a href="https://www.alexandersteen.de">Alexander Steen</a>* (FU Berlin)
+<br>
+  <a href="https://sites.google.com/site/sorinica/">Sorin Stratulat</a> (U. Lorraine)
+<br>
+  <a href="https://www.mpi-inf.mpg.de/departments/automation-of-logic/people/sophie-tourret/">Sophie Tourret</a>* (MPII Saarbrücken)
+<br>
+  <a href="https://github.com/petarvukmirovic">Petar Vukmirovi&cacute;</a>* (VU Amsterdam)
+<br>
+  <a href="https://www.mpi-inf.mpg.de/departments/automation-of-logic/people/uwe-waldmann/">Uwe Waldmann</a>* (MPII Saarbrücken)
+<br>
+  <a href="http://www.cs.ru.nl/F.Wiedijk/">Freek Wiedijk</a>* (RU Nijmegen)
+<br>
+  <a href="https://www.cs.vu.nl/~wanf/">Wan Fokkink</a> (VU Amsterdam)
+
+<p>* speakers
+
+</div>
+
+<div class="container" id="Organizers">
+  <div class="page-header">
+    <h2>Organization</h2>
+  </div>
+
+  <a href="http://www.cs.vu.nl/~abp290/">Alexander Bentkamp</a> (VU Amsterdam)
+<br>
+  <a href="http://www.cs.vu.nl/~jbe248/">Jasmin Blanchette</a> (VU Amsterdam)
+
+<br>
+<br>
+<br>
+
+  <p>
+  <b>Acknowledgment:</b> We want to thank Pascal Fontaine, Mojca Lovrencak,
+  and Caroline Waij for helping with the organization.
+  This workshop is partially supported by the ERC Starting Grant 2016 <a
+  href="../index.html">Matryoshka</a> (grant agreement No.
+  <a href="http://cordis.europa.eu/project/rcn/207590_en.html">713999</a>)
+  and by the <a href="https://www.nwo.nl/financiering/onze-financieringsinstrumenten/ew/incidentele-steun/incidentele-steun.html">NWO incidentele steun</a> scheme.
+  We kindly ask participants to mention the support from the ERC and the NWO
+  in publications or in other kinds of scientific output that directly follows
+  from the workshop. (The NWO would also like to receive a copy of the relevant
+  publications.)
+
+  <br>
+  <br>
+  <br>
+    <div class="sticker">
+      <table>
+        <tbody><tr>
+          <td>&nbsp;
+          <td><img src="http://ec.europa.eu/research/participants/docs/h2020-funding-guide/imgs/eu-flag.jpg" width="50px" border="0" name="European Union flag"></td>
+          <td>&nbsp;&nbsp;&nbsp;
+          <td>This project has received funding from the European Union's Horizon 2020 research and innovation program
+            under grant agreement No. 713999.&nbsp;&nbsp;</td>
+        </tr>
+      </tbody></table>
+    </div>
+
+  <br>
+  <br>
+  <br>
+
+</div>
+
+</body>
+
+</html>
