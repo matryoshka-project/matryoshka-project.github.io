@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Matryoshka: Fast Interactive Verification through Strong Higher-Order Automation</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link href="navbar-fixed-top.css" rel="stylesheet">
+  <link href="custom.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="icon" href="matryoshka_four_dolls.png">
+
+  <style type="text/css">
+.sticker table {
+        border: 2px solid #aaa;
+        margin: 20px 80px 2px 80px;
+}
+  </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      <a class="navbar-brand" href="#">Matryoshka</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#Summary">Summary</a></li>
+        <li><a href="#Context">Context</a></li>
+        <li><a href="#Objectives">Goals</a></li>
+        <li><a href="#Team">Team</a></li>
+        <li><a href="#Events">Events</a></li>
+        <li><a href="#Publications">Papers</a></li>
+        <li><a href="#Contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="media-left">
+    <img src="matryoshka_four_dolls.png" class="media-object" style="width:180px" />
+  </div>
+  <div class="media-body">
+    <center>
+    <h1><img src="matryoshka_logo_480ppi.png" class="media-object" style="width:100%;max-width:450px" alt="Matryoshka"/></h1>
+    <p>Fast Interactive Verification through Strong Higher-Order Automation</p>
+    </center>
+  </div>
+  <div class="media-right">
+    <img src="matryoshka_four_dolls.png" class="media-object" style="width:180px" />
+  </div>
+</div>
+
+<div class="container">
+<p>
+<table>
+<tr><td rowspan=3 align=right valign=center><img src="eu_flag_yellow_low.jpg" width="100px" border="0" name="European Union flag">&nbsp;&nbsp;&nbsp;
+<td><font size=+1><a href="https://erc.europa.eu">European Research Council (ERC) Starting Grant 2016</a></font>
+<tr><td colspan=2><a href="http://cordis.europa.eu/project/rcn/207590_en.html">Grant agreement No. 713999</a>
+<tr><td colspan=2>March 2017 &ndash; February 2022
+<tr><td>&nbsp;
+<tr><td>&nbsp;
+<tr><td align=right><i>Principal investigator:</i>&nbsp;&nbsp;
+  <td><a href="http://www.cs.vu.nl/~jbe248/">Jasmin Blanchette</a>, Vrije Universiteit Amsterdam
+<tr><td align=right valign=top><i>Senior collaborators:</i>&nbsp;&nbsp;
+  <td><a href="https://members.loria.fr/PFontaine/">Pascal Fontaine</a>, Université de Liège<br>
+  <a href="https://members.loria.fr/SMerz/">Stephan Merz</a>, Inria Nancy<br>
+  <a href="http://wwwlehre.dhbw-stuttgart.de/~sschulz/DHBW_Stephan_Schulz/Stephan_Schulz.html">Stephan Schulz</a>, DHBW Stuttgart<br>
+  <a href="http://www.mpi-inf.mpg.de/departments/automation-of-logic/people/sophie-tourret/">Sophie Tourret</a>, Inria Nancy<br>
+  <a href="http://www.mpi-inf.mpg.de/departments/automation-of-logic/people/uwe-waldmann/">Uwe Waldmann</a>, Max-Planck-Institut für Informatik
+<tr><td>&nbsp;
+<tr><td align=right><i>Host institution:</i>&nbsp;&nbsp;
+  <td><a href="http://www.vu.nl/en/">Vrije Universiteit Amsterdam</a>, the Netherlands
+<tr><td align=right><i>Additional beneficiary:</i>&nbsp;&nbsp;
+  <td><a href="https://www.inria.fr/en/">Inria</a>, France
+<tr><td align=right><i>Linked third party:</i>&nbsp;&nbsp;
+  <td><a href="http://www.univ-lorraine.fr">Université de Lorraine</a>, France
+    (until September 2019)
+</table>
+</div>
+
+<div class="container" id="Summary">
+  <div class="page-header">
+    <h2>Summary</h2>
+  </div>
+
+  <p>
+    Proof assistants are increasingly used to verify hardware and software and
+    to formalize mathematics. However, despite the success stories, they remain
+    very laborious to use. The situation has improved with the integration of
+    first-order automatic theorem provers&mdash;superposition provers and SMT
+    (satisfiability modulo theories) solvers&mdash;through middleware such as
+    <a href="http://isabelle.in.tum.de/dist/doc/sledgehammer.pdf">Sledgehammer</a>
+    for Isabelle/HOL and <a href="http://cl-informatik.uibk.ac.at/software/hh/">HOLyHammer</a> for HOL Light and HOL4;
+    but this research has now
+    reached the point of diminishing returns. Only so much can be done when
+    viewing automatic provers as black boxes.
+  </p>
+
+
+  <p>
+    To make interactive verification more cost-effective, we propose to deliver
+    very high levels of automation to users of proof assistants by fusing and
+    extending two lines of research: automatic and interactive theorem
+    proving. Our starting point is that first-order (FO)
+    automatic provers are the best tools available for performing most of the
+    logical work. Our approach will be to enrich superposition and SMT with
+    higher-order (HO) reasoning in a careful manner, to preserve their desirable
+    properties. We will design proof rules and strategies, guided by
+    representative benchmarks from interactive verification.
+  </p>
+
+  <p>
+    With higher-order superposition and higher-order SMT in place, we will
+    develop highly automatic provers building on modern superposition provers
+    and SMT solvers, following a novel stratified architecture. To reach end
+    users, these new provers will be integrated in proof assistants and will
+    be available as backends to more specialized verification tools. The users
+    of proof assistants and similar tools stand to experience substantial
+    productivity gains.
+  </p>
+</div>
+
+<div class="container" id="Context">
+  <div class="page-header">
+    <h2>Context and state of the art anno 2016</h2>
+  </div>
+
+  <p>
+  <i>Proof assistants</i> (also called interactive theorem provers) are interactive
+  tools with a graphical user interface that make it
+  possible to develop computer-checked, formal proofs of theorems, usually
+  expressed in some variant of <i>higher-order</i> (<i>HO</i>) <i>logic</i>. The primary
+  advantage of formal proofs over their pen-and-paper counterparts is the
+  high trustworthiness of the result; but increasingly, proof assistants are
+  also used for their convenience, especially for program verification,
+  where the proof obligations can be very large and unwieldy.
+
+  <p>
+  Compared with other formal methods, the hallmark of proof assistants is their
+  wide applicability and expressiveness. They have been employed since the
+  1990s for hardware and software verification at AMD and Intel.
+  Some mathematical proofs, such as the four-color theorem and the Kepler
+  conjecture, are so complex and require such massive
+  computations that they could be fully trusted only after they had been conducted
+  in a proof assistant. Vladimir Voevodsky, a leading homotopy theorist and Fields
+  medalist, advocates the use of these systems as the only satisfactory answer to the
+  unreliability of modern mathematics.
+
+  <p>
+  In computer science, two recent groundbreaking developments are the C compiler CompCert
+  verified using the Coq proof assistant, and the seL4 operating system
+  microkernel,
+  verified using Isabelle. CompCert is entering
+  Airbus's tool chain because it generates trustworthy optimized code; without a
+  formal proof, certification authorities would not condone the use of compiler
+  optimizations.
+  The seL4 microkernel was developed jointly with a
+  formal proof that it meets its specification. By building on the verified kernel,
+  it is now possible to design verified software chains, with formalized safety
+  and security properties. There are
+  <a href="https://docs.sel4.systems/CommunityProjects.html">ongoing projects</a> in
+  the automotive industry, aviation, space flight, and consumer devices based
+  on seL4.
+
+  <p>
+  So why is only a tiny fraction of software verified? There is a
+  misconception that proof assistants can be mastered only by mathematical
+  virtuosi, but this has been repeatedly refuted in practice.
+  A much more
+  serious issue that affects all users, whether novice or expert,
+  is that proof assistants are very laborious to use.
+  The formal verification of seL4 required about 20 person-years,
+  compared with 2.2 person-years to develop the microkernel itself.
+  To formalize one step in an informal mathematical argument, users must often
+  introduce intermediate properties, interacting with the proof assistant through
+  special commands called <i>tactics</i>.
+  The need for users to engage in so many interactions&mdash;the lack
+  of automation&mdash;stands out as the primary cause of low productivity.
+
+  <p>
+  The situation has improved substantially in recent years with the rise
+  of <i>first-order</i> (<i>FO</i>) <i>automatic theorem provers</i>, especially
+  superposition provers and SMT (satisfiability modulo theories) solvers.
+  These are fully automatic command-line tools that take self-contained
+  problems as input and systematically explore the proof space.
+  Systems such as Sledgehammer for Isabelle, as well as HOLyHammer, MizAR, and
+  Why3, provide a one-click connection from proof assistants to first-order
+  provers,
+  relieving the user from having to
+  perform tedious tactic manipulations and to memorize lemma libraries.
+  Using Isabelle without Sledgehammer has been compared to walking instead of
+  running.
+  According to Thomas Hales, the mathematician
+  who proved the Kepler conjecture and who led the Flyspeck project
+  that formalized it,
+
+  <blockquote>
+      Sledgehammers and machine learning algorithms have led to visible success. Fully
+      automated procedures can prove &hellip;
+      47% of the HOL Light/Flyspeck libraries, with comparable rates in Isabelle.
+      These automation rates represent an enormous saving in human labor.
+  </blockquote>
+
+  <p>
+  When formalizing G&ouml;del's incompleteness theorems, Lawrence Paulson estimated his
+  improvement in productivity in a private communication
+  as a "factor of at least three, maybe five"&mdash;an
+  anecdotal but telling remark.
+
+  <p>
+  <b>Example</b>&nbsp;&nbsp;While formalizing some results that depend on multisets,
+  the principal investigator found himself needing the basic property
+  |<i>A</i>| + |<i>B</i>| = |<i>A</i> &cup; <i>B</i>| + |<i>A</i> &cap; <i>B</i>|,
+  where <i>A</i> and <i>B</i> range over finite multisets and |&nbsp;&nbsp;|
+  denotes cardinality.
+  Within 30 seconds, Sledgehammer produced a proof
+  text invoking a suitable tactic with ten existing lemmas.
+  Without Sledgehammer, proving the property could easily have taken 5 to 15
+  minutes, and even longer for a novice.
+
+  <p>
+  Not all proof goals arising in interactive verification are this easy. All
+  too often, tools like Sledgehammer fail to prove trivial-looking goals. This
+  can happen for a number of reasons:
+
+  <ul>
+  <li><i>Lost in translation</i>: The translation from higher-order logic
+  to the automatic provers' first-order logic relies on clumsy, incomplete encodings,
+  often resulting in problems that are theoretically or practically unprovable.
+
+  <li><i>No induction</i>: First-order provers generally cannot perform
+  induction, a special case of higher-order reasoning, and the few that can
+  support only a form of induction (structural induction on datatypes).
+
+  <li><i>Explosive search space</i>:
+  First-order provers perform a systematic, breadth-first search for a proof. They usually
+  fail on interactive goals that require a long proof, even if the proof is
+  straightforward to a human.
+  </ul>
+
+  <blockquote>
+    First-order automatic provers are very useful, but they are greatly
+    hampered by their lack of support for higher-order constructs. More research
+    is necessary to combine the most successful first-order methods
+    with strong higher-order reasoning.
+  </blockquote>
+
+  <p>
+  Native higher-order automated reasoning has been researched since the late
+  1960s.
+  However, this work has not produced a viable
+  alternative to the Sledgehammer-style HO-to-FO translation. We see two
+  reasons for this:
+  <ol>
+  <li>Higher-order reasoning has not yet assimilated the most
+  successful first-order methods, namely superposition and SMT.
+  <li>The existing provers
+  are designed for small and tricky higher-order problems, whereas
+  typical proof goals are only mildly higher-order but large.
+  </ol>
+  Moreover, these provers do not support polymorphism, which is needed to
+  reason about parameterized theories, and they usually
+  fail to discover even trivial proofs by induction.
+
+</div>
+
+<div class="container" id="Objectives">
+  <div class="page-header">
+    <h2>Challenges and objectives</h2>
+  </div>
+
+<p>
+Interactive theorem proving has grown considerably in recent years. Proof
+assistants are employed to build safety- and security-critical systems, and it
+is not uncommon for research papers to be accompanied by formal proofs. The
+memory models of Java and C++ have been mechanically verified. Proof
+assistants are even deployed in the classroom, replacing pen-and-paper proofs.
+These circumstances point to a future where these tools will be routinely used
+for critical computing infrastructure, for programming language design, and
+more broadly for research in computer science and mathematics—contributing to
+more reliable systems and science. But to make this a reality, we must <b>take
+the hard, tedious labor out of interactive verification</b>. Despite the success
+of Sledgehammer-style automation, interactive verification is rarely
+cost-effective. Much more ought to be done.
+
+<p>
+A fundamental problem is that automatic provers and proof assistants are
+developed by two mostly disjoint communities, pursuing their own goals.
+Sledgehammer tries to compensate for the mismatch between these two worlds,
+but only so much can be done when using automatic provers as black boxes. A
+more radical approach is necessary for further progress.
+
+<blockquote>
+    We aim to create efficient proof calculi and higher-order
+    provers that will target proof assistants and their applications.
+</blockquote>
+
+<p>
+High levels of automation will arise only by building on the strengths of both
+communities. Higher-order reasoning, including induction, really belongs in
+high-performance automatic provers. The principles underlying the tactics of
+proof assistants, largely based on higher-order rewriting, must be integrated
+into the proof calculi of automatic provers, to solve problems that require
+both higher-order rewriting and systematic search. Briefly, we want to enrich
+state-of-the-art automatic methods with concepts motivated by interactive
+verification.
+The first-order provers and calculi are sophisticated artifacts with fragile
+properties; combinations require careful theoretical and pragmatic
+considerations.
+
+<p>
+We will purse four objectives, presented below.
+Our starting point is that first-order provers are the best tools available
+for performing most of the logical work. First-order provers, in turn, may
+delegate this work to SAT (satisfiability) solvers, in a game of <i>Russian
+dolls</i>. Most problems that are higher-order are only mildly so—a little
+higher-order can go a long way. Often, expanding definitions and normalizing
+λ-terms is all the higher-order reasoning that is needed; but the proof
+assistants are often too weak to carry out the remaining reasoning steps
+automatically, and first-order provers cannot manipulate the encoded λs
+efficiently. Typical proof goals arising in interactive verification are not very
+difficult, but they require a mixture of undirected proof search and long chains
+of straightforward reasoning.
+
+<h3>Objective 1: Extend&nbsp;superposition&nbsp;and&nbsp;SMT to&nbsp;higher&#8209;order&nbsp;logic</h3>
+
+<p>
+A major part of this objective is to devise strong automation for higher-order
+logic (also called simple type theory). Given that higher-order automation has
+been researched for decades, with limited success, relying on a breakthrough
+is a high-risk aspect of our proposal. Yet several factors play in our favor:
+
+<ul>
+<li>The past 25 years have seen the rise of superposition provers, SAT solvers,
+and SMT solvers. Most of the research on higher-order reasoning either
+predates these developments or fails to fully capitalize on them.
+
+<li>Thanks to the wider adoption of proof assistants, we now have a clear idea
+of the kinds of goals arising in practice and can count on a huge body of
+relevant benchmarks (e.g., the <a href="http://www.isa-afp.org/">Archive of
+Formal Proofs</a>).
+
+<li>On interactive goals, Sledgehammer is demonstrably superior to previous
+approaches to higher-order reasoning. Yet, its eager HO-to-FO
+translation views automatic provers as black boxes. Better performance will be
+possible if we open the black boxes and interleave FO and HO reasoning.
+</ul>
+
+<p>
+Superposition and SMT are currently the most successful proof calculi for
+classical first-order logic.
+Despite some convergence, they remain very different
+technologies, with complementary strengths and weaknesses. The experience with
+Sledgehammer and similar tools is that many goals can be proved only with
+superposition or only with SMT. With multi-core processors being the norm, it is
+beneficial to let different kinds of provers run in parallel. Another reason
+for pursuing both approaches is that there might be synergies between
+higher-order reasoning and each calculus.
+
+<p>
+The challenge is to preserve the desirable properties of the underlying
+first-order calculi—whether theoretical (soundness and completeness) or
+practical (effciency)—while extending them to perform higher-order rewriting
+and other higher-order reasoning. This is especially problematic for
+superposition. The calculus relies on a term ordering to prune the search
+space. This has sometimes been seen as an insurmountable obstacle for the
+extension of superposition to higher-order logic, but we are confident that a
+λ-term ordering with the desired properties can be designed. Furthermore,
+recent work has shown that polymorphism, induction, and extensionality
+reasoning are compatible with superposition, all of which are desirable
+features of higher-order provers.
+
+<p>
+Proofs about proof calculi tend to be quite tedious. For this reason, we plan
+to "eat our own dog food" and carry some of them out in a proof assistant. Our
+contributions will be part of the
+<a href="https://bitbucket.org/isafol/isafol/wiki/Home">IsaFoL (Isabelle Formalization of Logic) repository</a>.
+
+<!--
+<h4>Status</h4>
+
+
+We designed a superposition calculus for a clausal fragment of extensional
+polymorphic higher-order logic that includes anonymous functions but excludes
+Booleans.
+-->
+
+<h3>Objective 2: Design&nbsp;stratified&nbsp;architectures&nbsp;to&nbsp;build&nbsp;higher-order&nbsp;provers
+on&nbsp;top&nbsp;of&nbsp;state&#8209;of&#8209;the&#8209;art&nbsp;first&#8209;order&nbsp;provers</h3>
+
+<p>
+In the past decade, we have seen the emergence of higher-order provers based
+on a <i>cooperative architecture</i>. These are full-fledged provers that regularly
+invoke an external first-order prover as a terminal procedure, in an attempt
+to finish the proof quickly. The external prover may succeed if all the
+necessary higher-order instantiations have been performed. But because the
+less efficient higher-order part of the prover steers the search, this
+architecture leads to comparatively poor performance on problems with a
+substantial first-order component.
+
+<p>
+We propose a radically different stratified architecture for higher-order
+provers, code-named Matryoshka. At an abstract level, a first-order prover
+combines three ingredients: (1) a collection of FO formulas derived so far;
+(2) a set of FO inference rules; and (3) a main loop that applies the rules to
+derive more formulas. Our envisioned architecture will extend this setup with
+(1') a collection of HO formulas and (2') HO inference rules that operate on
+all formulas and put any derived formula in the appropriate collection. The
+principal modification to the underlying first-order prover is to the main
+loop, which must interleave FO and HO rule applications. Unlike with the
+cooperative architecture, a Matryoshka prover is a single program, written in
+one language—typically, C or C++.
+
+<p>
+<center>
+<table>
+<tr><td>&nbsp;
+<tr>
+  <td valign=bottom><img src="fo_prover_240ppi.png" class="media-object" style="width:192px"/>
+  <td width=10%>&nbsp;
+  <td valign=bottom><img src="matryoshka_prover_240ppi.png" class="media-object" style="width:307px"/>
+<tr><td>&nbsp;
+<tr>
+  <td align=center><b>A first-order prover</b>
+  <th>
+  <td align=center><b>A Matryoshka prover</b>
+<tr><td>&nbsp;
+</table>
+</center>
+</p>
+
+<p>
+With this novel architecture, the automatic prover behaves exactly like a FO
+prover on FO problems, performs mostly like a FO prover on HO problems that
+are mostly first-order, and scales up to arbitrary HO problems, in keeping
+with the zero-overhead principle ("What you don't use, you don't pay for").
+The architecture is reminiscent of the interaction between the SAT solver and
+quantifier instantiation inside an SMT solver, but there are many open
+questions because the two logics involved in a stratified higher-order prover
+are more expressive.
+
+<p>
+The concrete results of this research project will include two higher-order
+superposition provers, based on <a
+href="https://github.com/c-cube/zipperposition">Zipperposition</a> and <a
+href="http://wwwlehre.dhbw-stuttgart.de/~sschulz/E/E.html">E</a>, and a
+higher-order SMT solver, based on <a
+href="http://www.verit-solver.org">veriT</a>. We will also collaborate with
+the developers of other provers, such as the superposition prover <a
+href="http://www.vprover.org">Vampire</a>, the SMT solver <a
+href="http://cvc4.cs.nyu.edu/web/">CVC4</a>, and the higher-order
+paramodulation prover <a href="http://page.mi.fu-berlin.de/lex/leo3/">Leo-III</a>.
+
+<!--
+<h4>Status</h4>
+
+  <p>
+  <b>Extending a brainiac prover to lambda-free higher-order logic</b>
+  <br>Petar Vukmirovi&cacute;, Jasmin Christian Blanchette, Simon Cruanes, and Stephan Schulz.
+  In Vojnar, T., Zhang, L. (eds.) <i>25th International Conference on Tools and Algorithms for the
+  Construction and Analysis of Systems (TACAS 2019)</i>, LNCS 11427, pp. 192&ndash;210, Springer, 2019.
+  <br><font size="2"><a href="pubs/ehoh_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/ehoh_report.pdf">Report (PDF)</a></font>
+
+
+  <p>
+  <b><i>Implementation of Lambda-Free Higher-Order Superposition</i></b>
+  <br>Petar Vukmirovi&cacute;. MSc thesis, Vrije Universiteit Amsterdam, 2018.
+  <br><font size="2"><a href="pubs/vukmirovic_msc_thesis.pdf">Thesis (PDF)</a></font>
+-->
+
+<h3>Objective 3: Design&nbsp;practical&nbsp;methods&nbsp;and&nbsp;heuristics based&nbsp;on&nbsp;well&#8209;chosen&nbsp;benchmarks</h3>
+
+<p>
+We will develop high-level, technology-agnostic rules, heuristics, and
+strategies for instantiating higher-order variables (i.e., variables
+representing functions or formulas) and for reasoning about λ-terms,
+polymorphic types, (co)datatypes, (co)induction, and arithmetic.
+
+<p>
+Moreover, first-order provers often fail because induction is necessary.
+Recent work on automating structural induction in superposition and SMT
+are welcome developments; but to reach its full
+potential, this work must be generalized to arbitrary induction schemas,
+including well-founded induction and rule induction.
+Codatatypes and coinduction, which are used in the
+metatheory of programming to model infinite traces or processes, are other
+examples of general, widely applicable theories that could be automated
+efficiently. Higher-order logic is also powerful enough to capture mathematical
+binder notations such as summations and integrals, which arise when studying
+quantitative properties of programs and protocols; automating these will have
+practical value in a variety of domains.
+
+<p>
+It has been argued that to make further progress in automated reasoning, we
+must introduce a planning layer that governs the proving process at a higher
+level than proof calculi, performing plausible reasoning, emulating a human.
+Proof planning has not yet made a strong practical impact on interactive or
+automatic proving, but the time has come to revisit this idea in
+conjunction with machine learning, as part of this objective.
+
+<!--
+<h4>Status</h4>
+
+-->
+
+<h3>Objective 4: Integrate&nbsp;our&nbsp;new&nbsp;provers&nbsp;into&nbsp;proof&nbsp;assistants,
+with&nbsp;proof&nbsp;reconstruction&nbsp;to&nbsp;ensure&nbsp;trustworthiness</h3>
+
+<p>
+Ultimately, the crucial question is whether our methods will bring substantial
+benefits to end users. Most of these will work with a proof assistant, which
+offers a convenient interface for controlling automatic provers and for
+performing manual proof steps when necessary. Thus, it will be vital to
+integrate our new stratified provers in proof assistants, by developing or
+extending Sledgehammer-like tools. We plan to target <a href="https://coq.inria.fr">Coq</a>,
+<a href="http://isabelle.in.tum.de">Isabelle/HOL</a>, and the
+<a href="http://research.microsoft.com/en-us/um/people/lamport/tla/tla.html">TLA+
+Proof System</a>, which cover the main higher-order formalisms in use today:
+dependent type theory, higher-order logic, and set theory. Coq and Isabelle/HOL
+are probably the two most popular proof assistants, with hundreds of users.
+Coq's native automation is weaker than Isabelle's, and there is no equivalent
+to Sledgehammer. As for the TLA+ Proof System, it is a newer tool for
+verifying concurrent and distributed systems based on Leslie Lamport's
+Temporal Logic of Actions, with potential in industry. The proofs
+generated by the new provers will be translated, or "reconstructed," to yield
+self-contained Coq, Isabelle/HOL, and TLA+ proof texts.
+
+<p>
+<center>
+<table>
+<tr><td>&nbsp;
+<tr>
+  <td valign=bottom><img src="matryoshka_hammer_240ppi.png" class="media-object" style="width:750px"/>
+<tr><td>&nbsp;
+<tr>
+  <td align=center><b>A Matryoshka-enabled Sledgehammer</b>
+<tr><td>&nbsp;
+</table>
+</center>
+</p>
+
+<p>
+Automated reasoning requires highly optimized data structures and algorithms,
+written in an imperative language. A separation of concerns means that the
+same automatic provers can be shared across many proof assistants. We contend
+that too much work has gone into engineering the individual proof assistants,
+and too little into developing compositional methods and tools with a broad
+applicability across systems.
+
+<!--
+<h4>Status</h4>
+
+ -->
+
+</div>
+
+<div class="container" id="Team">
+  <div class="page-header">
+    <h2>The Matryoshka team</h2>
+  </div>
+
+  <h3>Funded by the project</h3>
+<!--  <a href=""> </a>-->
+<!-- sorted by seniority blocks, then alphabetically -->
+  <a href="http://www.cs.vu.nl/~jbe248/">Jasmin Blanchette</a> &nbsp;(VU Amsterdam, principal investigator)<br />
+  <a href="https://members.loria.fr/PFontaine/">Pascal Fontaine</a> &nbsp;(U. Liège, senior collaborator)<br />
+  <a href="https://members.loria.fr/SMerz/">Stephan Merz</a> &nbsp;(Inria Nancy, senior collaborator)<br />
+  <a href="https://gebner.org/">Gabriel Ebner</a> &nbsp;(VU Amsterdam, postdoctoral researcher)<br />
+  <a href="http://www.cs.vu.nl/~jhl890/">Johannes Hölzl</a> &nbsp;(VU Amsterdam, postdoctoral researcher)<br />
+  <a href="http://robertylewis.com/">Robert Y. Lewis</a> &nbsp;(VU Amsterdam, postdoctoral researcher)<br />
+  <a href="http://www.cs.vu.nl/~abp290/">Alexander Bentkamp</a> &nbsp;(VU Amsterdam, PhD student)<br />
+  <a href="https://www.linkedin.com/in/antoine-defourn%E9-90795b106/">Antoine Defourné</a> &nbsp;(U. Lorraine and Inria Nancy, PhD student)<br />
+  <a href="https://www.linkedin.com/in/daniel-el-ouraoui-9a1ba1142/">Daniel El Ouraoui</a> &nbsp;(U. Lorraine and Inria Nancy, PhD student)<br />
+  <a href="http://schurr.at">Hans-Jörg Schurr</a> &nbsp;(U. Lorraine and Inria Nancy, PhD student)<br />
+  <a href="https://petarvukmirovic.github.io/home">Petar Vukmirovi&cacute;</a> &nbsp;(VU Amsterdam, PhD student)<br />
+  <a href="https://www.linkedin.com/in/phillip-lippe/">Phillip Lippe</a> &nbsp;(VU Amsterdam, MSc research assistant)
+
+  <h3>Associated members</h3>
+  <a href="http://wwwlehre.dhbw-stuttgart.de/~sschulz/DHBW_Stephan_Schulz/Stephan_Schulz.html">Stephan Schulz</a> &nbsp;(DHBW Stuttgart)<br />
+  <a href="https://www.mpi-inf.mpg.de/departments/automation-of-logic/people/sophie-tourret/">Sophie Tourret</a> &nbsp;(MPII Saarbrücken)<br />
+  <a href="http://www.mpi-inf.mpg.de/departments/automation-of-logic/people/uwe-waldmann/">Uwe Waldmann</a> &nbsp;(MPII Saarbrücken)
+
+  <h3>Main collaborators</h3>
+  <a href="https://members.loria.fr/HBarbosa/">Haniel Barbosa</a> &nbsp;(U. Iowa)<br />
+  <a href="https://simon.cedeela.fr/">Simon Cruanes</a> &nbsp;(Aesthetic Integration)<br />
+  <a href="http://cl-informatik.uibk.ac.at/users/mfaerber/">Michael F&auml;rber</a> &nbsp;(VU Amsterdam)<br />
+  <a href="http://fmv.jku.at/fleury/">Mathias Fleury</a> &nbsp;(JKU Linz)<br />
+  <a href="https://yousource.it.jyu.fi/~vivevinu">Visa Nummelin</a> &nbsp;(VU Amsterdam)<br />
+  <a href="https://people.compute.dtu.dk/andschl/">Anders Schlichtkrull</a> &nbsp;(DTU Copenhagen)<br />
+  Daniel Wand &nbsp;(Bosch)<br />
+  <a href="http://people.mpi-inf.mpg.de/~weidenb/">Christoph Weidenbach</a> &nbsp;(MPII Saarbrücken)
+
+  <h3>Additional collaborators</h3>
+  <a href="http://theory.stanford.edu/~barrett/">Clark Barrett</a> &nbsp;(Stanford U.)<br />
+  <a href="https://www.research.manchester.ac.uk/portal/ahmed.bhayat.html">Ahmed Bhayat</a> &nbsp;(U. Manchester)<br />
+  <a href="https://www.mpi-sws.org/people/hbecker/">Heiko Becker</a> &nbsp;(MPI-SWS Saarbrücken)<br />
+  <a href="http://www.cs.man.ac.uk/~korovink/">Konstantin Korovin</a> &nbsp;(U. Manchester)<br />
+  <a href="http://www21.in.tum.de/~nipkow/">Tobias Nipkow</a> &nbsp;(TU München)<br />
+  <a href="http://membres-lig.imag.fr/peltier/">Nicolas Peltier</a> &nbsp;(CNRS Grenoble)<br />
+  <a href="http://www.cs.man.ac.uk/~regerg/research.html">Giles Reger</a> &nbsp;(U. Manchester)<br />
+  <a href="http://homepage.divms.uiowa.edu/~ajreynol/">Andrew Reynolds</a> &nbsp;(U. Iowa)<br />
+  <a href="https://www.logic.at/staff/riener/">Martin Riener</a> &nbsp;(Inria Nancy)<br />
+  <a href="http://homepage.cs.uiowa.edu/~tinelli/">Cesare Tinelli</a> &nbsp;(U. Iowa)<br />
+  <a href="https://www21.in.tum.de/~traytel/">Dmitriy Traytel</a> &nbsp;(ETH Zürich)<br />
+  <a href="http://www.imm.dtu.dk/~jovi/">Jørgen Villadsen</a> &nbsp;(DTU Copenhagen)
+
+  <h3>Visiting researchers</h3>
+  <a href="https://www.xing.com/profile/Matthias_Hetzenberger">Matthias Hetzenberger</a> (TU Wien)<br />
+  Manon Blanc &nbsp;(ENS Paris-Saclay &amp; Inria Nancy)<br />
+  <a href="https://members.loria.fr/SStratulat/">Sorin Stratulat</a> &nbsp;(U. Lorraine)<br />
+  <a href="http://orbit.dtu.dk/en/persons/alexander-birch-jensen(68719760-a235-4a1b-ac1f-456f0c1f411a).html">Alexander Birch Jensen</a> &nbsp;(DTU Copenhagen)<br />
+  <a href="http://profs.sci.univr.it/~bonacina/">Maria Paola Bonacina</a> &nbsp;(U. Verona)<br />
+  <a href="https://aleksandarzeljic.github.io">Aleksandar Zeljić</a> &nbsp;(Stanford U.)<br />
+  <a href="https://www.mdx.ac.uk/about-us/our-people/staff-directory/profile/windridge-david">David Windridge</a> &nbsp;(Middlesex U.)<br />
+  <a href="http://homepage.cs.uiowa.edu/~tinelli//">Cesare Tinelli</a> &nbsp;(U. Iowa)<br />
+  <a href="http://www.cse.chalmers.se/~simrob/">Simon Robillard</a> &nbsp;(Chalmers Gothenburg)<br />
+  <a href="https://martin.desharnais.me">Martin Desharnais</a> &nbsp;(LMU München)<br />
+  <a href="http://cl-informatik.uibk.ac.at/users/cek/">Cezary Kaliszyk</a> &nbsp;(U. Innsbruck)<br />
+  <a href="http://isabelle.in.tum.de/~haftmann/">Florian Haftmann</a> &nbsp;(Isabelle Universe)<br />
+  <a href="https://sketis.net">Makarius Wenzel</a> &nbsp;(Isabelle Universe)<br />
+  <a href="http://home.in.tum.de/~wimmers/">Simon Wimmer</a> &nbsp;(TU München)<br />
+  <a href="http://www.cse.chalmers.se/~simrob/">Simon Robillard</a> &nbsp;(Chalmers Gothenburg)<br />
+  <a href="http://homepage.divms.uiowa.edu/~ajreynol/">Andrew Reynolds</a> &nbsp;(U. Iowa)
+
+  <h3>Interns</h3>
+  <a href="https://www.linkedin.com/in/pablo-le-hénaff-5b9272125/">Pablo Le H&eacute;naff</a> &nbsp;(&Eacute;cole Polytechnique Paris): &nbsp;April&mdash;August 2018 at VU Amsterdam<br />
+  <a href="https://www.linkedin.com/in/daniel-el-ouraoui-9a1ba1142/">Daniel El Ouraoui</a> &nbsp;(U. Paris Diderot): &nbsp;March&mdash;August 2017 at Inria Nancy
+
+  <h3>Thanks</h3>
+  The project is thankful for the support and advice of the following friends and colleagues:
+Jeremy Avigad,
+Jean-Pierre Banâtre,
+Peter Boven,
+Chad Brown,
+Jip Chong,
+Fabienne Elbar,
+Wan Fokkink,
+Carsten Fuhs,
+Kris de Jong,
+Cezary Kaliszyk,
+Steve Kremer,
+Mojca Lovrenčak,
+Leonardo de&nbsp;Moura,
+Anja Palatzke,
+Lawrence Paulson,
+Francis Petitjean,
+Sylvain Petitjean,
+Andrei Popescu,
+Femke van Raamsdonk,
+Trenton Schulz,
+Mark Summerfield,
+Nicolas Tabareau,
+Susanti Tang-Budiwandojo,
+Dmitriy Traytel,
+Josef Urban,
+Caroline Waij,
+and
+Paul Zimmermann.
+</div>
+
+<div class="container" id="Events">
+  <div class="page-header">
+    <h2>Events</h2>
+  </div>
+
+<!--
+  <h3>2020</h3>
+
+  <p>
+  <b><a href="https://fscd-ijcar-2020.org/workshops.html">Zipperposition Tutorial 2020</a></b>
+  <br><b>Tutorial on Hacking Zipperposition</b>
+  <br>1 July 2020, Earth
+  </p>
+-->
+
+  <h3>2019</h3>
+
+  <p>
+  <b><a href="https://github.com/sneeuwballen/zipperposition">Zipperposition Workshop 2019</a></b>
+  <br><b>First Workshop on the Zipperposition Theorem Prover</b>
+  <br>25&ndash;26 July 2019, Amsterdam, the Netherlands
+  </p>
+
+  <p>
+  <b><a href="terese2019/index.html">TeReSe 2019</a></b>
+  <br><b>Dutch Term Rewriting Seminar</b>
+  <br>18 June 2019, Amsterdam, the Netherlands
+  </p>
+
+  <p>
+  <b><a href="matryoshka2019/index.html">VeriDis Retreat + Matryoshka 2019</a></b>
+  <br><b>VeriDis Group Retreat + Second European Workshop on Higher-Order Automated Reasoning</b>
+  <br>11&ndash;14 June 2019, Amsterdam, the Netherlands
+  </p>
+
+  <p>
+  <b><a href="https://lean-forward.github.io/lean-together/2019/">Lean Together 2019</a></b>
+  <br><b>Workshop for Users and Developers of the Lean Proof Assistant</b>
+  <br>7&ndash;11 January 2019, Amsterdam, the Netherlands
+  </p>
+
+  <h3>2018</h3>
+
+  <p>
+  <b><a href="wait2018/index.html">WAIT 2018</a></b>
+  <br><b>Fourth International Workshop on Automated (Co)inductive Theorem Proving</b>
+  <br>28&ndash;29 June 2018, Amsterdam, the Netherlands
+
+  <p>
+  <b><a href="matryoshka2018/index.html">Matryoshka 2018</a></b>
+  <br><b>First European Workshop on Higher-Order Automated Reasoning</b>
+  <br>25&ndash;27 June 2018, Amsterdam, the Netherlands
+
+</div>
+
+<div class="container" id="Publications">
+  <div class="page-header">
+    <h2>Publications</h2>
+  </div>
+
+  <h3>Drafts</h3>
+
+  <p>
+  <b>λ-Superposition: From Theory to Trophy</b>
+  <br>Jasmin Blanchette.
+  <br><font size="2"><a href="pubs/trophy.pdf">Author's PDF</a></font>
+
+  <p>
+  <b>New Heights: 3.0</b>
+  <br>Stephan Schulz, Petar Vukmirović, and Jasmin Blanchette.
+  <br><font size="2"><a href="pubs/e30.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Machine learning for instance selection in SMT solving</b>
+  <br>Daniel El Ouraoui, Jasmin Blanchette, Pascal Fontaine, and Cezary Kaliszyk.
+  <br><font size="2"><a href="pubs/instanceselection_paper.pdf">Authors' PDF</a></font>
+
+  <h3>2023</h3>
+
+  <p>
+  <b>SAT-inspired higher-order eliminations</b>
+  <br>Jasmin Blanchette and Petar Vukmirović.
+  <i>Logical Methods in Computer Science</i> <b>19</b>(2), 2023.
+  <br><font size="2"><a href="https://arxiv.org/abs/2208.07775">Publisher's page</a> &sdot; <a href="pubs/satelimhol.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>SAT-inspired eliminations for superposition</b>
+  <br>Petar Vukmirović, Jasmin Blanchette, and Marijn J.H. Heule. <i>Transactions on Computational Logic</i> <b>24</b>(1): article 7, 2023.
+  <br><font size="2"><a href="https://dl.acm.org/doi/10.1145/3565366">Publisher's page</a> &sdot; <a href="pubs/satelimsup_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Unifying splitting</b>
+  <br>Gabriel Ebner, Jasmin Blanchette, and Sophie Tourret. <i>Journal of Automated Reasoning</i> <b>67</b>, article number 16, 2023.
+  <br><font size="2"><a href="https://link.springer.com/article/10.1007/s10817-023-09660-8">Publisher's page</a> &sdot; <a href="pubs/splitting_article.pdf">Authors' PDF</a> &sdot; <a href="pubs/splitting_article_errata.pdf">Errata (PDF)</a></font>
+
+  <p>
+  <b>Mechanical mathematicians</b>
+  <br>Alexander Bentkamp, Jasmin Blanchette, Visa Nummelin, Sophie Tourret, Petar Vukmirović, and Uwe Waldmann. <em>Communications of the ACM</em> <bb>66</b>(4): 80&ndash;90, 2023.
+  <br><font size="2"><a href="https://cacm.acm.org/magazines/2023/4/271243-mechanical-mathematicians/">Publisher's page</a> &sdot; <a href="pubs/mechanical.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Superposition for higher-order logic</b>
+  <br>Alexander Bentkamp, Jasmin Blanchette, Sophie Tourret, and Petar Vukmirović. <i>Journal of Automated Reasoning</i> <b>67</b>, article number 10, 2023.
+  <br><font size="2"><a href="https://link.springer.com/article/10.1007/s10817-022-09649-9">Publisher's page</a> &sdot; <a href="pubs/hosup_article.pdf">Authors' PDF</a> &sdot; <a href="pubs/hosup_article_errata.pdf">Errata (PDF)</a></font>
+
+  <p>
+  <b>Extending a high-performance prover to higher-order logic</b>
+  <br>Petar Vukmirović, Jasmin Blanchette, and Stephan Schulz.
+  <i>29th International Conference on Tools and Algorithms for the Construction
+  and Analysis of Systems (TACAS 2023)</i>, LNCS 13994, pp. 111–129, Springer, 2023.
+  <br><font size="2"><a href="https://doi.org/10.1007/978-3-031-30820-8_10">Publisher's page</a> &sdot; <a href="pubs/lambdae.pdf">Authors' PDF</a></font>
+
+  <h3>2022</h3>
+
+  <p>
+  <b>A comprehensive framework for saturation theorem proving</b>
+  <br>Uwe Waldmann, Sophie Tourret, Simon Robillard, and Jasmin Blanchette. <i>Journal of Automated Reasoning</i> <b>66</b>(4): 499&ndash;539, 2022.
+  <br><font size="2"><a href="https://link.springer.com/article/10.1007/s10817-022-09621-7">Publisher's page</a> &sdot; <a href="pubs/saturate_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Making higher-order superposition work</b>
+  <br>Petar Vukmirović, Alexander Bentkamp, Jasmin Blanchette, Simon Cruanes, Visa Nummelin, and Sophie Tourret. <i>Journal of Automated Reasoning</i> <b>66</b>(4): 541&ndash;564, 2022.
+  <br><font size="2"><a href="https://link.springer.com/article/10.1007/s10817-021-09613-z">Publisher's page</a> &sdot; <a href="pubs/ho_techniques_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b><i>Implementation of Higher-Order Superposition</i></b>
+  <br>Petar Vukmirović. PhD thesis, Vrije Universiteit Amsterdam, 2022.
+  <br><font size="2"><a href="pubs/vukmirovic_phd_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b><i>Stronger SMT Solvers for Proof Assistants: Proofs, Quantifier Simplification, Strategy Schedules</i></b>
+  <br>Hans-Jörg Schurr. PhD thesis, Université de Lorraine, 2022.
+  <br><font size="2"><a href="https://hal.univ-lorraine.fr/tel-03845527/document">Thesis (PDF)</a></font>
+
+  <p>
+  <b>Seventeen provers under the hammer</b>
+  <br>Martin Desharnais, Petar Vukmirović, Jasmin Blanchette, and Makarius Wenzel.
+  In Andronick, J., de Moura, L. (eds.) <i>13th Conference on Interactive Theorem Proving (ITP 2022)</i>,
+  LIPIcs 237, pp. 8:1&ndash;8:18, Schloss Dagstuhl&mdash;Leibniz-Zentrum f&uuml;r Informatik, 2022.
+  <br><font size="2"><a href="https://drops.dagstuhl.de/opus/volltexte/2022/16717/">Publisher's page</a> &sdot; <a href="pubs/seventeen.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Extending a brainiac prover to lambda-free higher-order logic</b>
+  <br>Petar Vukmirovi&cacute;, Jasmin Blanchette, Simon Cruanes, and Stephan Schulz.
+  <i>International Journal on Software Tools for Technology Transfer</i>
+  <b>24</b>(1): 67&ndash;87, 2022.
+  <br><font size="2"><a href="https://link.springer.com/content/pdf/10.1007/s10009-021-00639-7.pdf">Publisher's page</a> &sdot; <a href="pubs/ehoh_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>A bi-directional extensible interface between Lean and Mathematica</b>
+  <br>Robert Y. Lewis and Minchao Wu.
+  <i>Journal of Automated Reasoning</i> <b>66</b>(2): 215&ndash;238, 2022.
+  <br><font size="2"><a href="https://link.springer.com/article/10.1007/s10817-021-09611-1">Publisher's page</a> &sdot; <a href="https://arxiv.org/pdf/2101.07758">Authors' PDF</a></font>
+
+  <h3>2021</h3>
+
+  <p>
+  <b>The embedding path order for lambda-free higher-order terms</b>
+  <br>Alexander Bentkamp.
+  <i>Journal of Applied Logics</i> <b>8</b>(10): 2447-2469, 2021.
+  <br><font size="2"><a href="https://collegepublications.co.uk/ifcolog/?00052">Publisher's page</a> &sdot; <a href="http://matryoshka.gforge.inria.fr/pubs/epo_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Efficient full higher-order unification</b>
+  <br>Petar Vukmirović, Alexander Bentkamp, and Visa Nummelin.
+  <i>Logical Methods in Computer Science</i> <b>17</b>(4): 18:1–18:31, 2021.
+  <br><font size="2"><a href="https://arxiv.org/abs/2011.09507">Publisher's page</a> &sdot; <a href="pubs/hounif_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>SAT-inspired eliminations for superposition</b>
+  <br>Petar Vukmirović, Jasmin Blanchette, and Marijn J.H. Heule. In Piskac, R., Whalen, M. (eds.) <em>21st International Conference on Formal Methods in Computer-Aided Design (FMCAD 2021)</em>,
+  pp. 231&ndash;240, IEEE, 2021.
+  <br><font size="2"><a href="https://ieeexplore.ieee.org/document/9617710">Publisher's page</a> &sdot; <a href="pubs/satelimsup_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/satelimsup_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Superposition with lambdas</b>
+  <br>Alexander Bentkamp, Jasmin Blanchette, Sophie Tourret, Petar Vukmirovi&cacute;, and Uwe Waldmann.
+  <i>Journal of Automated Reasoning</i> <b>65</b>(7): 893–940, 2021.
+  <br><font size="2"><a href="https://doi.org/10.1007/s10817-021-09595-y">Publisher's page</a> &sdot; <a href="pubs/lamsup_article.pdf">Authors' PDF</a></font>
+
+<!--
+  <p>
+  <b><i>Formalizing 2-3 Trees in Isabelle/HOL</i></b>
+  <br>Silvio Bolognani. BSc thesis, Vrije Universiteit Amsterdam, 2021.
+  <br><font size="2"><a href="pubs/bolognani_bsc_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b><i>Simplicial Sets in Lean</i></b>
+  <br>Floris Cnossen. BSc thesis, Universiteit van Amsterdam, 2021.
+  <br><font size="2"><a href="pubs/cnossen_bsc_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b><i>Disseminating a Library of Formal Proofs for Flexible and Persistent Searching</i></b>
+  <br>Polina Boneva. BSc thesis, Vrije Universiteit Amsterdam, 2021.
+  <br><font size="2"><a href="pubs/boneva_bsc_thesis.pdf">Thesis (PDF)</a></font>
+-->
+
+  <p>
+  <b>Quantifier simplification by unification in SMT</b>
+  <br>Pascal Fontaine and Hans-Jörg Schurr. In Konev, B., Reger, G. (eds.) <i>13th International Symposium on Frontiers of Combining Systems (FroCoS 2021)</i>, LNCS 12941, pp. 232&ndash;249, Springer, 2021.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-86205-3_13">Publisher's page</a> &sdot; <a href="pubs/qsimp_paper.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Superposition for lambda-free higher-order logic</b>
+  <br>Alexander Bentkamp, Jasmin Blanchette, Simon Cruanes, and Uwe Waldmann.
+  <i>Logical Methods in Computer Science</i> <b>17</b>(2): 1:1&ndash;1:38, 2021.
+  <br><font size="2"><a href="https://lmcs.episciences.org/7349">Publisher's page</a> &sdot; <a href="pubs/lfhosup_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Superposition with first-class Booleans and inprocessing clausification</b>
+  <br>Visa Nummelin, Alexander Bentkamp, Sophie Tourret, and Petar Vukmirović.
+  In Platzer, A., Sutcliffe, G. (eds.) <i>28th International Conference on Automated Deduction (CADE-28)</i>, LNCS 12699, pp. 378&ndash;395, Springer, 2021.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-79876-5_22">Publisher's page</a> &sdot; <a href="pubs/boolsup_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/boolsup_report.pdf">Report (PDF)</a> &sdot; <a href="pubs/boolsup_errata.pdf">Errata (PDF)</a></font>
+
+  <p>
+  <b>A unifying splitting framework</b>
+  <br>Gabriel Ebner, Jasmin Blanchette, and Sophie Tourret.
+  In Platzer, A., Sutcliffe, G. (eds.) <i>28th International Conference on Automated Deduction (CADE-28)</i>, LNCS 12699, pp. 344&ndash;360, Springer, 2021.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-79876-5_20">Publisher's page</a> &sdot; <a href="pubs/splitting_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/splitting_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Superposition for full higher-order logic</b>
+  <br>Alexander Bentkamp, Jasmin Blanchette, Sophie Tourret, and Petar Vukmirović.
+  In Platzer, A., Sutcliffe, G. (eds.) <i>28th International Conference on Automated Deduction (CADE-28)</i>, LNCS 12699, pp. 396&ndash;412, Springer, 2021.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-79876-5_23">Publisher's page</a> &sdot; <a href="pubs/hosup_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/hosup_report.pdf">Report (PDF)</a> &sdot; <a href="pubs/hosup_conf_errata.pdf">Errata (PDF)</a></font>
+
+  <p>
+  <b>Making higher-order superposition work</b>
+  <br>Petar Vukmirović, Alexander Bentkamp, Jasmin Blanchette, Simon Cruanes, Visa Nummelin, and Sophie Tourret.
+  In Platzer, A., Sutcliffe, G. (eds.) <i>28th International Conference on Automated Deduction (CADE-28)</i>, LNCS 12699, pp. 415&ndash;432, Springer, 2021.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-79876-5_24">Publisher's page</a> &sdot; <a href="pubs/ho_techniques.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Reliable reconstruction of fine-grained proofs in a proof assistant</b>
+  <br>Hans-Jörg Schurr, Mathias Fleury, and Martin Desharnais.
+  In Platzer, A., Sutcliffe, G. (eds.) <i>28th International Conference on Automated Deduction (CADE-28)</i>, LNCS 12699, pp. 450&ndash;467, Springer, 2021.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-79876-5_26">Publisher's page</a> &sdot; <a href="pubs/verit_isa_paper.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b><i>Superposition for Higher-Order Logic</i></b>
+  <br>Alexander Bentkamp. PhD thesis, Vrije Universiteit Amsterdam, 2021.
+  <br><font size="2"><a href="pubs/bentkamp_phd_thesis.pdf">Thesis (PDF)</a> &sdot; <a href="pubs/bentkamp_phd_thesis_errata.pdf">Errata (PDF)</a></font>
+
+  <p>
+  <b><i>Méthodes pour le raisonnement d'ordre supérieur dans SMT</i></b>
+  <br>Daniel El Ouraoui. PhD thesis, Université de Lorraine, 2021.
+  <br><font size="2"><a href="pubs/elouraoui_phd_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b>A modular Isabelle framework for verifying saturation provers</b>
+  <br>Sophie Tourret and Jasmin Blanchette. In Hrițcu, C., Popescu, A. (eds.) <em>10th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP 2021)</em>, pp. 224&ndash;237, ACM, 2021.
+  <br><font size="2"><a href="https://dl.acm.org/doi/10.1145/3437992.3439912">Publisher's page</a> &sdot; <a href="pubs/satur_isa_paper.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Formalizing the ring of Witt vectors</b>
+  <br>Johan Commelin and Robert Y. Lewis. In Hrițcu, C., Popescu, A. (eds.) <em>10th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP 2021)</em>, pp. 264&ndash;277, ACM, 2021.
+  <br><font size="2"><a href="https://dl.acm.org/doi/10.1145/3437992.3439919">Publisher's page</a> &sdot; <a href="https://arxiv.org/abs/2010.02595">Authors' PDF</a></font>
+
+  <p>
+  <b><i>Nano P4: Towards Formal Verification of P4 and P4 Applications using Isabelle/HOL</i></b>
+  <br>Johannes Blaser. MSc thesis, Vrije Universiteit Amsterdam, 2021.
+  <br><font size="2"><a href="pubs/blaser_msc_thesis.pdf">Thesis (PDF)</a></font>
+
+  <h3>2020</h3>
+
+  <p>
+  <b>Higher-order automation in TLAPS (work in progress)</b>
+  <br>Antoine Defourné and Petar Vukmirovic. Presented at <i>TLA<sup>+</sup> Community Event 2020</i>, 2020.
+  <br><font size="2"><a href="https://hal.archives-ouvertes.fr/hal-02990614/document">Authors' PDF</a></font>
+
+  <p>
+  <b>Better automation for TLA<sup>+</sup> Proofs</b>
+  <br>Antoine Defourné. In Dargaye, Z., Regis-Gianas, Y. (eds.) <i>JFLA 2020</i>, 2020.
+  <br><font size="2"><a href="https://hal.archives-ouvertes.fr/hal-02990598/document">Author's PDF</a></font>
+
+  <p>
+  <b>Formalizing Bachmair and Ganzinger's ordered resolution prover</b>
+  <br>Anders Schlichtkrull, Jasmin Blanchette, Dmitriy Traytel, and Uwe Waldmann. <i>Journal of Automated Reasoning</i> <b>64</b>(7): 1169&ndash;1195, 2020.
+  <br><font size="2"><a href="https://rdcu.be/b41lD">Online viewer</a> &sdot; <a href="https://link.springer.com/article/10.1007/s10817-020-09561-0">Publisher's page</a> &sdot; <a href="pubs/rp_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Lifting congruence closure with free variables to &lambda;-free higher-order logic via SAT encoding</b>
+  <br>Sophie Tourret, Pascal Fontaine, Daniel El Ouraoui, and Haniel Barbosa.
+  Presented at <em>18th International Workshop on Satisfiability Modulo Theories
+  (SMT 2020)</em>.
+  <br><font size="2"><a href="pubs/lfhoccfv_wip.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Boolean reasoning in a higher-order superposition prover</b>
+  <br>Petar Vukmirovi&cacute; and Visa Nummelin. Presented at <em>7th Workshop
+  on Practical Aspects of Automated Reasoning (PAAR-2020)</em>.
+  <br><font size="2"><a href="pubs/ho_bools_paper.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Simplifying casts and coercions</b>
+  <br>Robert Y. Lewis and Paul-Nicolas Madelaine. Presented at <em>7th Workshop
+  on Practical Aspects of Automated Reasoning (PAAR-2020)</em>.
+  <br><font size="2"><a href="https://lean-forward.github.io/norm_cast/norm_cast.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Maintaining a library of formal mathematics</b>
+  <br>Florian van Doorn, Gabriel Ebner, and Robert Y. Lewis. In Benzmüller, C.,
+    Miller, B. (eds.) <i>13th Conference on Intelligent Computer Mathematics
+    (CICM 2020)</i>, LNCS 12236, pp. 251&nbsp;267, Springer, 2020.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-53518-6_16">Publisher's page</a> &sdot; <a href="https://lean-forward.github.io/maintenance/paper.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Efficient full higher-order unification</b>
+  <br>Petar Vukmirović, Alexander Bentkamp, and Visa Nummelin.
+  In Ariola, Z.M. (ed.), <i>5th International Conference on Formal Structures for Computation and Deduction (FSCD 2020)</i>,
+  LIPIcs 167, pp. 5:1&ndash;5:17, Schloss Dagstuhl&mdash;Leibniz-Zentrum f&uuml;r Informatik, 2020.
+  <br><font size="2"><a href="https://doi.org/10.4230/LIPIcs.FSCD.2020.5">Publisher's page</a> &sdot; <a href="pubs/hounif_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/hounif_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Politeness for the theory of algebraic datatypes</b>
+  <br>Ying Sheng, Yoni Zohar, Christophe Ringeissen, Jane Lange, Pascal
+  Fontaine, and Clark W. Barrett.
+  In Peltier, N., Sofronie-Stokkermans, V. (eds.) <i>10th International Joint Conference on Automated Reasoning (IJCAR 2020), Part I</i>, LNCS 12166, pp. 238&ndash;255 Springer, 2020.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-51074-9_14">Publisher's page</a> &sdot; <a href="https://arxiv.org/pdf/2004.04854.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>A comprehensive framework for saturation theorem proving</b>
+  <br>Uwe Waldmann, Sophie Tourret, Simon Robillard, and Jasmin Blanchette.
+  In Peltier, N., Sofronie-Stokkermans, V. (eds.) <i>10th International Joint Conference on Automated Reasoning (IJCAR 2020), Part I</i>, LNCS 12166, pp. 316&ndash;334 Springer, 2020.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-51074-9_18">Publisher's page</a> &sdot; <a href="pubs/satur_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/satur_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Politeness and combination methods for theories with bridging functions</b>
+  <br>Paula Chocron, Pascal Fontaine, and Christophe Ringeissen. <i>Journal of Automated Reasoning</i> <b>64</b>(1): 97&ndash;134, 2020.
+  <br><font size="2"> <a href="https://link.springer.com/article/10.1007/s10817-019-09512-4">Web site</a> &sdot; <a href="pubs/bridging_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Scalable fine-grained proofs for formula processing</b>
+  <br>Haniel Barbosa, Jasmin Christian Blanchette, Mathias Fleury, and Pascal Fontaine. <i>Journal of Automated Reasoning</i> <b>64</b>(3): 485&ndash;510, 2020.
+  <br><font size="2"><a href="https://rdcu.be/bfk6x">Online viewer</a> &sdot; <a href="http://link.springer.com/article/10.1007/s10817-018-09502-y">Web site</a> &sdot; <a href="pubs/processing_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>The Lean mathematical library</b>
+  <br>The mathlib Community. In Blanchette, J., Hrițcu, C. (eds.) <em>9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP 2020)</em>, ACM, 2020.
+  <br><font size="2"><a href="https://leanprover-community.github.io/papers/mathlib-paper.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b><i>Formalization of Logical Calculi in Isabelle/HOL</i></b>
+  <br>Mathias Fleury. PhD thesis, Universit&auml;t des Saarlandes, 2020.
+  <br><font size="2"><a href="pubs/fleury_phd_thesis.pdf">Thesis (PDF)</a></font>
+
+  <h3>2019</h3>
+
+  <p>
+  <b>Theory combination: Beyond equality sharing</b>
+  <br>Maria Paola Bonacina, Pascal Fontaine, Christophe Ringeissen, and Cesare Tinelli.
+  In Lutz, C., Sattler, U., Tinelli, C., Turhan, A.-Y., Wolter, F. (ed.) <i>Description Logic, Theory Combination, and All That&mdash;Essays Dedicated
+  to Franz Baader on the Occasion of His 60th Birthday</i>, LNCS 11560, pp. 57&ndash;89, Springer, 2019.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007%2F978-3-030-22102-7_3">Publisher's page</a> &sdot; <a href="https://hal.inria.fr/hal-02194001/document">Authors' PDF</a></font>
+
+  <p>
+  <b><i>Arithmetic and Casting in Lean</i></b>
+  <br>Paul-Nicolas Madelaine. MSc internship report, Vrije Universiteit Amsterdam, 2019.
+  <br><font size="2"><a href="https://lean-forward.github.io/internships/arithmetic_and_casting_in_lean.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b><i>Verification of GPU Program Optimizations in Lean</i></b>
+  <br>Björn Fischer. MSc thesis, Vrije Universiteit Amsterdam, 2019.
+  <br><font size="2"><a href="pubs/fischer_msc_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b>A formal proof of the expressiveness of deep learning</b>
+  <br>Alexander Bentkamp, Jasmin Christian Blanchette, and Dietrich Klakow. <i>Journal of Automated Reasoning</i> <b>63</b>(2), pp. 347&ndash;368, 2019.
+  <br><font size="2"><a href="https://rdcu.be/7w0d">Online viewer</a> &sdot; <a href="http://link.springer.com/article/10.1007/s10817-018-9481-5">Web site</a> &sdot; <a href="pubs/deep_learning_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Formalizing the solution to the cap set problem</b>
+  <br>Sander R. Dahmen, Johannes Hölzl, and Robert Y. Lewis. In Harrison, J., O'Leary, J., Tolmach, A. (eds.) <em>10th International Conference on Interactive Theorem Proving (ITP 2019)</em>, LIPIcs 141, pages 15:1&ndash;15:19, Schloss Dagstuhl&mdash;Leibniz-Zentrum f&uuml;r Informatik, 2019.
+  <br><font size="2"><a href="https://lean-forward.github.io/e-g/e-g.pdf">Authors' PDF</a> &sdot; <a href="https://lean-forward.github.io/e-g/CapSets.pdf">Some details (PDF)</a></font>
+
+  <p>
+  <b><i>New Clause Selection Function Elements for the E Theorem Prover</i></b>
+  <br>Niels Galjaard. BSc thesis, Vrije Universiteit Amsterdam, 2019.
+  <br><font size="2"><a href="pubs/galjaard_bsc_thesis.pdf">Thesis (PDF)</a></font>
+
+<!--
+  <p>
+  <b><i>An Implementation of Buchberger's Algorithm in Lean</i></b>
+  <br>Markos Dermitzakis. BSc thesis, Vrije Universiteit Amsterdam, 2019.
+  <br><font size="2"><a href="pubs/dermitzakis_bsc_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b><i>Formalization of Sorting Algorithms in Isabelle/HOL</i></b>
+  <br>Marco Pierre Fernandez Burgos. BSc thesis, Vrije Universiteit Amsterdam, 2019.
+  <br><font size="2"><a href="pubs/fernandez_burgos_bsc_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b><i>Homotopy Type Theory: Synthetic Homotopy Theory and Proof Verification</i></b>
+  <br>Max Blans. BSc thesis, Universiteit van Amsterdam, 2019.
+  <br><font size="2"><a href="pubs/blans_bsc_thesis.pdf">Thesis (PDF)</a></font>
+-->
+
+  <p>
+  <b>Stronger higher-order automation: A report on the ongoing Matryoshka project</b>
+  <br>Jasmin Blanchette, Pascal Fontaine, Stephan Schulz, Sophie Tourret, and Uwe Waldmann. Presented at <i>Second International Workshop on Automated Reasoning: Challenges, Applications, Directions, Exemplary Achievements (ARCADE 2019)</i>.
+  <br><font size="2"><a href="pubs/stronger_abstract.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Reconstructing veriT proofs in Isabelle/HOL</b>
+  <br>Mathias Fleury and Hans-Jörg Schurr.
+  In Reis, G., Barbosa, H. (eds.) <i>6th Workshop on Proof eXchange for Theorem Proving (PxTP 2019)</i>, pp. 36&ndash;50, EPTCS 301, 2019.
+  <br><font size="2"><a href="http://eptcs.web.cse.unsw.edu.au/paper.cgi?PxTP2019.6">Publisher's page</a> &sdot; <a href="pubs/PxTP2019.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Faster, higher, stronger: E 2.3</b>
+  <br>Stephan Schulz, Simon Cruanes, and Petar Vukmirovi&cacute;.
+  In Fontaine, P. (ed.) <i>27th International Conference on Automated Deduction (CADE-27)</i>, LNCS 11716, pp. 495&ndash;507, Springer, 2019.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-29436-6_29">Publisher's page</a> &sdot; <a href="pubs/e_2.3.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Extending SMT solvers to higher-order logic</b>
+  <br>Haniel Barbosa, Andrew Reynolds, Daniel El Ouraoui, Cesare Tinelli, and Clark Barrett.
+  In Fontaine, P. (ed.) <i>27th International Conference on Automated Deduction (CADE-27)</i>, LNCS 11716, pp. 35&ndash;54, Springer, 2019.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-29436-6_3">Publisher's page</a> &sdot; <a href="https://homepages.dcc.ufmg.br/~hbarbosa/papers/cade2019.pdf">Authors' PDF</a> &sdot; <a href="https://homepages.dcc.ufmg.br/~hbarbosa/papers/hosmt_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Superposition with lambdas</b>
+  <br>Alexander Bentkamp, Jasmin Blanchette, Sophie Tourret, Petar Vukmirovi&cacute;, and Uwe Waldmann.
+  In Fontaine, P. (ed.) <i>27th International Conference on Automated Deduction (CADE-27)</i>, LNCS 11716, pp. 55&ndash;73, Springer, 2019.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-29436-6_4">Publisher's page</a> &sdot; <a href="pubs/lamsup_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/lamsup_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Extending a brainiac prover to lambda-free higher-order logic</b>
+  <br>Petar Vukmirovi&cacute;, Jasmin Christian Blanchette, Simon Cruanes, and Stephan Schulz.
+  In Vojnar, T., Zhang, L. (eds.) <i>25th International Conference on Tools and Algorithms for the
+  Construction and Analysis of Systems (TACAS 2019)</i>, LNCS 11427, pp. 192&ndash;210, Springer, 2019.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-17462-0_11">Publisher's page</a> &sdot; <a href="pubs/ehoh_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/ehoh_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Better SMT proofs for easier reconstruction</b>
+  <br>Haniel Barbosa, Jasmin Christian Blanchette, Mathias Fleury, Pascal Fontaine, and Hans-Jörg Schurr. In Hales, T. C., Kaliszyk, C., Kumar, R., Schulz, S., Urban, J. (eds.) <em>4th Conference on Artificial Intelligence and Theorem Proving (AITP 2019)</em>.
+  <br><font size="2"><a href="pubs/better_smt_proofs_abstract.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Machine learning for instance selection in SMT solving</b>
+  <br>Jasmin Christian Blanchette, Daniel El Ouraoui, Pascal Fontaine, and Cezary Kaliszyk. In Hales, T. C., Kaliszyk, C., Kumar, R., Schulz, S., Urban, J. (eds.) <em>4th Conference on Artificial Intelligence and Theorem Proving (AITP 2019)</em>.
+  <br><font size="2"><a href="pubs/ml_instance_abstract.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>A formal proof of Hensel's lemma over the <em>p</em>-adic integers</b>
+  <br>Robert Y. Lewis. In Mahboubi, A., Myreen, M. O. (eds.) <em>8th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP 2019)</em>, pp. 15&ndash;26, ACM, 2019.
+  <br><font size="2"><a href="http://robertylewis.com/padics/padics.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>A verified prover based on ordered resolution</b>
+  <br>Anders Schlichtkrull, Jasmin Christian Blanchette, and Dmitriy Traytel. In Mahboubi, A., Myreen, M. O. (eds.) <em>8th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP 2019)</em>, pp. 152&ndash;165, ACM, 2019.
+  <br><font size="2"><a href="https://dl.acm.org/citation.cfm?id=3294100">Publisher's page</a> &sdot; <a href="pubs/fun_rp_paper.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Formalizing the metatheory of logical calculi and automatic provers in Isabelle/HOL (invited talk)</b>
+  <br>Jasmin Christian Blanchette. In Mahboubi, A., Myreen, M. O. (eds.) <em>8th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP 2019)</em>, pp. 1&ndash;13, ACM, 2019.
+  <br><font size="2"><a href="https://dl.acm.org/citation.cfm?id=3294087">Publisher's page</a> &sdot; <a href="pubs/metathy_paper.pdf">Author's PDF</a></font>
+
+  <p>
+  <b>Bindings as bounded natural functors</b>
+  <br>Jasmin Christian Blanchette, Lorenzo Gheri, Andrei Popescu, and Dmitriy Traytel. In <i>PAMPL</i> <b>3</b>(POPL), pp. 22:1&ndash;22:34, 2019.
+  <br><font size="2"><a href="https://dl.acm.org/citation.cfm?id=3290335">Publisher's page</a> &sdot; <a href="pubs/bindings.pdf">Authors' PDF</a> &sdot; <a href="pubs/bindings_extended.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Formalization of concurrent revisions</b>
+  <br>Roy Overbeek. <i>Archive of Formal Proofs</i>, 2019.
+  <br><font size="2"><a href="https://www.isa-afp.org/entries/Concurrent_Revisions.shtml">Formal proof development</a></font>
+
+  <h3>2018</h3>
+
+  <p>
+  <b>Wrapping computer algebra is surprisingly successful for non-linear SMT</b>
+  <br>Pascal Fontaine, Mizuhito Ogawa, Thomas Sturm, Van Khanh To, and Xuan Tung Vu.
+  In Bigatti, A.M., Brain, M. (eds.) <i>3rd Workshop on Satisfiability Checking and Symbolic Computation (SC-Square 2018)</i>.
+  CEUR Workshop Proceedings 2189, http://ceur-ws.org.
+  <br><font size="2"><a href="http://ceur-ws.org/Vol-2189/paper3.pdf">Free PDF</a></font>
+
+  <p>
+  <b>A verified functional implementation of Bachmair and Ganzinger's ordered resolution prover</b>
+  <br>Anders Schlichtkrull, Jasmin Christian Blanchette, and Dmitriy Traytel. <i>Archive of Formal Proofs</i>, 2018.
+  <br><font size="2"><a href="https://www.isa-afp.org/entries/Functional_Ordered_Resolution_Prover.shtml">Formal proof development</a></font>
+
+  <p>
+  <b><i>Formalizing the Semantics of Concurrent Revisions</i></b>
+  <br>Roy Overbeek. MSc thesis, Vrije Universiteit Amsterdam, 2018.
+  <br><font size="2"><a href="pubs/overbeek_msc_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b><i>A Reo Semantics for Reasoning about Speculative Execution</i></b>
+  <br>Hans-Dieter A. Hiep. MSc thesis, Vrije Universiteit Amsterdam, 2018.
+  <br><font size="2"><a href="pubs/hiep_msc_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b><i>Formalization of Logic in the Isabelle Proof Assistant</i></b>
+  <br>Anders Schlichtkrull. PhD thesis, Technical University of Denmark, 2018.
+  <br><font size="2"><a href="pubs/schlichtkrull_phd_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b>Formalization of the embedding path order for lambda-free higher-order terms</b>
+  <br>Alexander Bentkamp. <i>Archive of Formal Proofs</i>, 2018.
+  <br><font size="2"><a href="https://www.isa-afp.org/entries/Lambda_Free_EPO.shtml">Formal proof development</a></font>
+
+  <p>
+  <b>Foreword to the Special Issue on Automated Reasoning</b>
+  <br>Pascal Fontaine, Cezary Kaliszyk, Stephan Schulz, and Josef Urban.
+  <i>AI Communications</i> <b>31</b>(3), pp. 235&ndash;236, 2018.
+  <br><font size="2"><a href="https://content.iospress.com/articles/ai-communications/aic765">Web site</a></font>
+
+  <p>
+  <b><i>Meta-programming with the Lean proof assistant</i></b>
+  <br>Pablo Le H&eacute;naff. MSc internship report, &Eacute;cole Polytechnique Paris, 2018.
+  <br><font size="2"><a href="pubs/lehenaff_report.pdf">Report (PDF)</a></font>
+
+<!--
+  <p>
+  <b><i>A Formally Verified Proof of the Mason-Stothers Theorem in Lean</i></b>
+  <br>Jens Wagemaker. BSc thesis, Vrije Universiteit Amsterdam, 2018.
+  <br><font size="2"><a href="pubs/wagemaker_bsc_thesis.pdf">Thesis (PDF)</a></font>
+-->
+
+  <p>
+  <b>Higher-order SMT solving (work in progress)</b>
+  <br>Haniel Barbosa, Andrew Reynolds, Pascal Fontaine, Daniel El Ouraoui, and Cesare Tinelli.
+  In Dimitrova, R., D'Silva, V. (eds.), <i>16th International Workshop on Satisfiability Modulo Theories (SMT 2018)</i>.
+  <br><font size="2"><a href="pubs/hosmt_wip.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Superposition with datatypes and codatatypes</b>
+  <br>Jasmin Christian Blanchette, Nicolas Peltier, and Simon Robillard.
+  In Galmiche, D., Schulz, S., Sebastiani, R. (eds.) <i>9th International Joint Conference on Automated Reasoning (IJCAR 2018)</i>,
+  LNCS 10900, pp. 370&ndash;387, Springer, 2018.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-319-94205-6_25">Publisher's page</a>
+  &sdot; <a href="pubs/supdata_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/supdata_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Superposition for lambda-free higher-order logic</b>
+  <br>Alexander Bentkamp, Jasmin Christian Blanchette, Simon Cruanes, and Uwe Waldmann.
+  In Galmiche, D., Schulz, S., Sebastiani, R. (eds.) <i>9th International Joint Conference on Automated Reasoning (IJCAR 2018)</i>,
+  LNCS 10900, pp. 28&ndash;46, Springer, 2018.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-319-94205-6_3">Publisher's page</a>
+  &sdot; <a href="pubs/lfhosup_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/lfhosup_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Formalizing Bachmair and Ganzinger's ordered resolution prover</b>
+  <br>Anders Schlichtkrull, Jasmin Christian Blanchette, Dmitriy Traytel, and Uwe Waldmann.
+  In Galmiche, D., Schulz, S., Sebastiani, R. (eds.) <i>9th International Joint Conference on Automated Reasoning (IJCAR 2018)</i>,
+  LNCS 10900, pp. 89&ndash;107, Springer, 2018.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-319-94205-6_7">Publisher's page</a>
+  &sdot; <a href="pubs/rp_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/rp_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Introduction to <i>Milestones in Interactive Theorem Proving</i></b>
+  <br>Jeremy Avigad, Jasmin Christian Blanchette, Gerwin Klein, Lawrence Paulson, Andrei Popescu, and Gregor Snelting. <i>Journal of Automated Reasoning</i> <b>61</b>(1&ndash;4), pp. 1&ndash;8, 2018.
+  <br><font size="2"><a href="https://link.springer.com/article/10.1007/s10817-018-9465-5">Publisher's page</a> &sdot; <a href="pubs/milestones_intro.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>A verified SAT solver framework with learn, forget, restart, and incrementality</b>
+  <br>Jasmin Christian Blanchette, Mathias Fleury, Peter Lammich, and Christoph Weidenbach. <i>Journal of Automated Reasoning</i> <b>61</b>(1&ndash;4), pp. 333&ndash;365, 2018.
+  <br><font size="2"><a href="http://rdcu.be/IUU0">Online viewer</a> &sdot; <a href="http://link.springer.com/article/10.1007/s10817-018-9455-7">Publisher's page</a> &sdot; <a href="pubs/sat_article.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Formalization of Bachmair and Ganzinger's ordered resolution prover</b>
+  <br>Anders Schlichtkrull, Jasmin Christian Blanchette, Dmitriy Traytel, and Uwe Waldmann. <i>Archive of Formal Proofs</i>, 2018.
+  <br><font size="2"><a href="https://www.isa-afp.org/entries/Ordered_Resolution_Prover.shtml">Formal proof development</a></font>
+
+  <p>
+  <b>Revisiting enumerative instantiation</b>
+  <br>Andrew Reynolds, Haniel Barbosa, and Pascal Fontaine.
+    In Beyer, D., Huisman, M. (eds.) <i>24th International Conference on Tools and Algorithms for the
+    Construction and Analysis of Systems (TACAS 2018), Part II</i>, LNCS 10806, pp. 112&ndash;131, Springer, 2018.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-319-89963-3_7">Publisher's page</a> &sdot; <a href="pubs/fol_enumerative_inst.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b><i>Implementation of Lambda-Free Higher-Order Superposition</i></b>
+  <br>Petar Vukmirovi&cacute;. MSc thesis, Vrije Universiteit Amsterdam, 2018.
+  <br><font size="2"><a href="pubs/vukmirovic_msc_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b>A verified SAT solver with watched literals using Imperative HOL</b>
+  <br>Mathias Fleury, Jasmin Christian Blanchette, and Peter Lammich. In Andronick, J., Felty, A. P. (eds.) <i>7th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP 2018)</i>, pp. 158&ndash;171, ACM, 2018.
+  <br><font size="2"><a href="https://dl-acm-org.vu-nl.idm.oclc.org/doi/abs/10.1145/3167080">Publisher's page</a> &sdot; '<a href="pubs/sat_2wl_paper.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Operations on bounded natural functors</b>
+  <br>Jasmin Christian Blanchette, Andrei Popescu, and Dmitriy Traytel. <i>Archive of Formal Proofs</i>, 2018.
+  <br><font size="2"><a href="https://www.isa-afp.org/entries/BNF_Operations.shtml">Formal proof development</a></font>
+
+  <h3>2017</h3>
+
+  <p>
+  <b>NP-completeness of small conflict set generation for congruence closure</b>
+  <br>Andreas Fellner, Pascal Fontaine, and Bruno Woltzenlogel Paleo.
+  <i>Formal Methods in System Design</i> <b>51</b>(3), pp. 533&ndash;544, 2017.
+  <br><font size="2"><a href="https://link.springer.com/content/pdf/10.1007%2Fs10703-017-0283-x.pdf">Publisher's page</a></font>
+
+  <p>
+  <b>A formally verified proof of the Central Limit Theorem</b>
+  <br>Jeremy Avigad, Johannes H&ouml;lzl, and Luke Serafin. <i>Journal of Automated Reasoning</i> <b>59</b>(4), pp. 389&ndash;423, 2017.
+  <br><font size="2"><a href="https://link.springer.com/article/10.1007/s10817-017-9404-x">Publisher's page</a> &sdot; <a href="https://home.in.tum.de/~hoelzl/documents/avigad2017clt.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b><i>Higher-Order in SMT</i></b>
+  <br>Daniel El Ouraoui. MSc internship report, Universit&eacute; Paris Diderot, 2017.
+  <br><font size="2"><a href="pubs/elouraoui_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Language and proofs for higher-order SMT (work in progress)</b>
+  <br>Haniel Barbosa, Jasmin Christian Blanchette, Simon Cruanes, Daniel El Ouraoui, and Pascal Fontaine.
+  In Dubois, C., Woltzenlogel Paleo, B. (eds.) <i>5th Workshop on Proof eXchange for Theorem Proving (PxTP 2017)</i>, pp. 15&ndash;22, EPTCS 262, 2017.
+  <br><font size="2"><a href="https://arxiv.org/abs/1712.01486v1">Publisher's page</a> &sdot; <a href="pubs/PxTP2017.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Towards strong higher-order automation for fast interactive verification</b>
+  <br>Jasmin Christian Blanchette, Pascal Fontaine, Stephan Schulz, and Uwe Waldmann.
+  In Reger, G., Traytel, D. (eds.) <i>1st International Workshop on Automated Reasoning: Challenges, Applications, Directions, Exemplary Achievements (ARCADE 2017)</i>, pp. 16&ndash;23, EPiC 51, EasyChair, 2017.
+  <br><font size="2"><a href="https://easychair.org/publications/paper/zn3j">Publisher's page</a> &sdot; <a href="pubs/arcade.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Subtropical satisfiability</b>
+  <br>Pascal Fontaine, Mizuhito Ogawa, Thomas Sturm, and Xuan Tung Vu.
+  In Dixon, C., Finger, M. (eds.)
+  <i>11th International Symposium on Frontiers of Combining Systems (FroCoS 2017)</i>,
+  LNCS 10483, pp. 189&ndash;206, Springer, 2017.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-319-66167-4_11">Publisher's page</a>
+  &sdot;
+  <a href="https://arxiv.org/pdf/1706.09236.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Superposition with structural induction</b>
+  <br>Simon Cruanes.
+  In Dixon, C., Finger, M. (eds.)
+  <i>11th International Symposium on Frontiers of Combining Systems (FroCoS 2017)</i>,
+  LNCS 10483, pp. 172&ndash;188, Springer, 2017.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-319-66167-4_10">Publisher's page</a>
+  &sdot;
+  <a href="https://cedeela.fr/~simon/files/frocos_17_paper.pdf">Author's PDF</a></font>
+
+  <p>
+  <b>Foundational (co)datatypes and (co)recursion for higher-order logic</b>
+  <br>Julian Biendarra, Jasmin Christian Blanchette, Aymeric Bouzy, Martin
+    Desharnais, Mathias Fleury, Johannes Hölzl, Ondřej Kunčar, Andreas
+    Lochbihler, Fabian Meier, Lorenz Panny, Andrei Popescu, Christian Sternagel,
+    René Thiemann, and Dmitriy Traytel.
+  In Dixon, C., Finger, M. (eds.)
+  <i>11th International Symposium on Frontiers of Combining Systems (FroCoS 2017)</i>,
+  LNCS 10483, pp. 3&ndash;21, Springer, 2017.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-319-66167-4_1">Publisher's page</a>
+  &sdot;
+  <a href="pubs/co_data_invited.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Nested multisets, hereditary multisets, and syntactic ordinals in Isabelle/HOL</b>
+  <br>Jasmin Christian Blanchette, Mathias Fleury, and Dmitriy Traytel.
+  In Miller, D. (ed.) <i>2nd International Conference on Formal Structures for Computation and Deduction (FSCD 2017)</i>,
+  LIPIcs 84, pages 11:1&ndash;11:18, Schloss Dagstuhl&mdash;Leibniz-Zentrum f&uuml;r Informatik, 2017.
+  <br><font size="2"><a href="https://drops.dagstuhl.de/opus/volltexte/2017/7715/">Publisher's page</a> &sdot; <a href="pubs/nested_multisets.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>A formal proof of the expressiveness of deep learning</b>
+  <br>Alexander Bentkamp, Jasmin Christian Blanchette, and Dietrich Klakow.
+  In Ayala-Rincon, M., Mu&ntilde;os, C. A. (eds.) <i>8th Conference on Interactive Theorem Proving (ITP 2017)</i>,
+  LNCS 10499, pp. 46&ndash;64, Springer, 2017.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-319-66107-0_4">Publisher's page</a> &sdot; <a href="pubs/deep_learning_paper.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>A verified SAT solver framework with learn, forget, restart, and incrementality</b>
+  <br>Jasmin Christian Blanchette, Mathias Fleury, and Christoph Weidenbach.
+  In Sierra, C. (ed.) <i>26th International Joint Conference on Artificial Intelligence (IJCAI-17)</i>, pp. 4786&ndash;4790, ijcai.org, 2017.
+  <br><font size="2"><a href="https://www.ijcai.org/proceedings/2017/667">Publisher's page</a> &sdot; <a href="pubs/sat_sister.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Satisfiability modulo bounded checking</b>
+  <br>Simon Cruanes.
+  In de Moura, L. (ed.) <i>26th International Conference on Automated Deduction (CADE-26)</i>, LNCS 10395, pp. 114&ndash;129, Springer, 2017.
+  <br><font size="2"><a href="https://cedeela.fr/~simon/files/cade_17_paper.pdf">Author's PDF</a> &sdot; <a href="https://cedeela.fr/~simon/files/cade_17_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Scalable fine-grained proofs for formula processing</b>
+  <br>Haniel Barbosa, Jasmin Christian Blanchette, and Pascal Fontaine.
+  In de Moura, L. (ed.) <i>26th International Conference on Automated Deduction (CADE-26)</i>, LNCS 10395, pp. 398&ndash;412, Springer, 2017.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-319-63046-5_25">Publisher's page</a> &sdot; <a href="pubs/processing_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/processing_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>A transfinite Knuth&ndash;Bendix order for lambda-free higher-order terms</b>
+  <br>Heiko Becker, Jasmin Christian Blanchette, Uwe Waldmann, and Daniel Wand.
+  In de Moura, L. (ed.) <i>26th International Conference on Automated Deduction (CADE-26)</i>, LNCS 10395, pp. 432&ndash;453, Springer, 2017.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-319-63046-5_27">Publisher's page</a> &sdot; <a href="http://www.cs.vu.nl/~jbe248/lambda_free_kbo_conf.pdf">Authors' PDF</a> &sdot; <a href="http://www.cs.vu.nl/~jbe248/lambda_free_kbo_rep.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b><i>Superposition: Types and Induction</i></b>
+  <br>Daniel Wand. PhD thesis, Universität des Saarlandes, 2017.
+  <br><font size="2"><a href="pubs/wand_phd_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b>Foundational nonuniform (co)datatypes for higher-order logic</b>
+  <br>Jasmin Christian Blanchette, Fabian Meier, Andrei Popescu, and Dmitriy Traytel.
+  <i>32nd Annual IEEE Symposium on Logic in Computer Science (LICS 2017)</i>, pp. 1&ndash;12, IEEE, 2017.
+  <br><font size="2"><a href="https://ieeexplore.ieee.org/document/8005071">Publisher's page</a> &sdot; <a href="pubs/nonuniform_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/nonuniform_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Congruence closure with free variables</b>
+  <br>Haniel Barbosa, Pascal Fontaine, and Andrew Reynolds. In Legay, A., Margaria, T. (eds.) <i>23rd International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS 2017), Part II</i>, LNCS 10206, pp. 214&ndash;230, Springer, 2017.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-662-54580-5_13">Publisher's page</a> &sdot; <a href="https://members.loria.fr/HBarbosa/papers/tacas2017.pdf">Authors' PDF</a> &sdot; <a href="https://hal.inria.fr/hal-01442691">Report (PDF)</a></font>
+
+  <p>
+  <b>A lambda-free higher-order recursive path order</b>
+  <br>Jasmin Christian Blanchette, Uwe Waldmann, and Daniel Wand. In Esparza, J., Murawski, A. S. (eds.) <i>20th International Conference on Foundations of Software Science and Computation Structures (FoSSaCS 2017)</i>, LNCS 10203, pp. 461&ndash;479, Springer, 2017.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-662-54458-7_27">Publisher's page</a> &sdot; <a href="http://www.cs.vu.nl/~jbe248/lambda_free_rpo_conf.pdf">Authors' PDF</a> &sdot; <a href="http://www.cs.vu.nl/~jbe248/lambda_free_rpo_rep.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>Friends with benefits: Implementing corecursion in foundational proof assistants</b>
+  <br>Jasmin Christian Blanchette, Aymeric Bouzy, Andreas Lochbihler, Andrei Popescu, and Dmitriy Traytel. In Yang, H. (ed.) <i>26th European Symposium on Programming (ESOP 2017)</i>, LNCS 10201, pp. 111&ndash;140, Springer, 2017.
+  <br><font size="2"><a href="https://link.springer.com/chapter/10.1007/978-3-662-54434-1_5">Publisher's page</a> &sdot; <a href="pubs/amico_paper.pdf">Authors' PDF</a> &sdot; <a href="pubs/amico_report.pdf">Report (PDF)</a></font>
+
+  <p>
+  <b>An Isabelle formalization of the expressiveness of deep learning (extended abstract)</b>
+  <br>Alexander Bentkamp, Jasmin Christian Blanchette, and Dietrich Klakow. In Hales, T. C., Kaliszyk, C., Schulz, S., Urban, J. (eds.) <i>2nd Conference on Artificial Intelligence and Theorem Proving (AITP 2017)</i>, pp. 22&ndash;23.
+  <br><font size="2"><a href="http://www.cs.vu.nl/~jbe248/deep_learning_abs.pdf">Abstract (PDF)</a></font>
+
+  <p>
+  <b>A decision procedure for (co)datatypes in SMT solvers</b>
+  <br>Andrew Reynolds and Jasmin Christian Blanchette. <i>Journal of Automated Reasoning</i> <b>58</b>(3), pp. 341&ndash;362, 2017.
+  <br><font size="2"><a href="https://rdcu.be/6hYA">Online viewer</a> &sdot; <a href="http://www.springer.com/-/2/AVSh7XIl2brxj7RS5yXm">Publisher's page</a> &sdot; <a href="codp_jour.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Soundness and completeness proofs by coinductive methods</b>
+  <br>Jasmin Christian Blanchette, Andrei Popescu, and Dmitriy Traytel. <i>Journal of Automated Reasoning</i>
+  <b>58</b>(1), pp. 149&ndash;179, 2017.
+  <br><font size="2"><a href="http://rdcu.be/lvwa">Onlin viewer</a> &sdot; <a href="http://link.springer.com/article/10.1007/s10817-016-9391-3">Publisher's page</a> &sdot; <a href="http://www.cs.vu.nl/~jbe248/compl2.pdf">Authors' PDF</a></font>
+
+  <p>
+  <b>Abstract soundness</b>
+  <br>Jasmin Christian Blanchette, Andrei Popescu, and Dmitriy Traytel. <i>Archive of Formal Proofs</i>, 2017.
+  <br><font size="2"><a href="https://www.isa-afp.org/entries/Abstract_Soundness.shtml">Formal proof development</a></font>
+
+  <h3>2016</h3>
+
+  <p>
+  <b><i>An Isabelle Formalization of the Expressiveness of Deep Learning</i></b>
+  <br>Alexander Bentkamp. MSc thesis, Universität des Saarlandes, 2016.
+  <br><font size="2"><a href="pubs/bentkamp_msc_thesis.pdf">Thesis (PDF)</a></font>
+
+  <p>
+  <b>Formalization of nested multisets, hereditary multisets, and syntactic ordinals</b>
+  <br>Jasmin Christian Blanchette, Mathias Fleury, and Dmitriy Traytel. <i>Archive of Formal Proofs</i>, 2016.
+  <br><font size="2"><a href="https://www.isa-afp.org/entries/Nested_Multisets_Ordinals.shtml">Formal proof development</a></font>
+
+  <p>
+  <b>Formalization of Knuth&ndash;Bendix orders for lambda-free higher-order terms</b>
+  <br>Heiko Becker, Jasmin Christian Blanchette, Uwe Waldmann, and Daniel Wand. <i>Archive of Formal Proofs</i>, 2016.
+  <br><font size="2"><a href="https://www.isa-afp.org/entries/Lambda_Free_KBOs.shtml">Formal proof development</a></font>
+
+  <p>
+  <b>Expressiveness of deep learning</b>
+  <br>Alexander Bentkamp. <i>Archive of Formal Proofs</i>, 2016.
+  <br><font size="2"><a href="https://www.isa-afp.org/entries/Deep_Learning.shtml">Formal proof development</a></font>
+
+  <p>
+  <b>Formalization of recursive path orders for lambda-free higher-order terms</b>
+  <br>Jasmin Christian Blanchette, Uwe Waldmann, and Daniel Wand. <i>Archive of Formal Proofs</i>, 2016.
+  <br><font size="2"><a href="https://www.isa-afp.org/entries/Lambda_Free_RPOs.shtml">Formal proof development</a></font>
+
+  <p>
+  <b><i>Formalization of "Types and Programming Languages" in Isabelle/HOL</i></b>
+  <br>Michaël Noël Divo. MSc thesis, Universität des Saarlandes, 2016.
+  <br><font size="2"><a href="pubs/divo_msc_thesis.pdf">Thesis (PDF)</a></font>
+
+</div>
+
+<div class="container" id="Contact">
+  <div class="page-header">
+    <h2>Contact</h2>
+  </div>
+
+  <p>
+  Please contact
+  <a href="mailto:jasmin.blanchette@inria.fr">Jasmin Blanchette</a>
+  and <a href="mailto:pascal.fontaine@inria.fr">Pascal Fontaine</a>
+  for inquiries related to the project.
+  </p>
+
+  <p>
+  The <tt>#Matryoshka</tt> stream of the Zulip chat room <a
+  href="https://sneeuwbal.zulipchat.com">Sneeuwbal</a> and the <a
+  href="http://lists.gforge.inria.fr/mailman/listinfo/matryoshka-devel">matryoshka-devel</a>
+  mailing list are used by the Matryoshka team for discussions. You can browse
+  the <a
+  href="http://lists.gforge.inria.fr/pipermail/matryoshka-devel/">mailing list
+  archives</a> or <a
+  href="http://lists.gforge.inria.fr/mailman/listinfo/matryoshka-devel">subscribe</a>
+  to it.
+  </p>
+
+  <p>
+  The project's official music video: <a
+  href="https://www.youtube.com/watch?v=gCg9MXNGTGQ">Matoryoshika by Hachi and
+  Gumi</a>.
+  </p>
+
+<!-- http://lists.gforge.inria.fr/mailman/listinfo/matryoshka-devel -->
+
+  <br>
+  <br>
+  <br>
+    <div class="sticker">
+      <table>
+        <tbody><tr>
+          <td>&nbsp;
+          <td><img src="eu_flag_yellow_low.jpg" width="50px" border="0" name="European Union flag"></td>
+          <td>&nbsp;&nbsp;&nbsp;
+          <td>This project has received funding from the European Union's Horizon 2020 research and innovation program
+            under grant agreement No. 713999.&nbsp;&nbsp;</td>
+        </tr>
+      </tbody></table>
+    </div>
+
+  <br>
+  <br>
+  <br>
+
+</div>
+
+</body>
+
+</html>

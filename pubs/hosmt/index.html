@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html><head>
+    <title>Extending SMT solvers to Higher-Order Logic</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="author" content="Haniel Barbosa, Andrew Reynolds, Daniel El Ouraoui, Cesare Tinelli and Clark Barrett" />
+    <meta name="description" content="Experimental data" />
+</head>
+<style type="text/css">body{margin:40px
+    auto;;line-height:1.6;font-size:18px;color:#444;padding:0
+    100px}h1,h2,h3{line-height:1.2}</style>
+<body>
+    <h1>Extending SMT solvers to Higher-Order Logic</h1>
+
+    <h2>
+        <a href="https://homepages.dcc.ufmg.br/~hbarbosa/">Haniel Barbosa</a>,
+        <a href="http://homepage.divms.uiowa.edu/~ajreynol/">Andrew Reynolds</a>,
+        Daniel El Ouraoui,
+        <a href="http://homepage.cs.uiowa.edu/~tinelli/">Cesare Tinelli</a>
+        and
+        <a href="http://theory.stanford.edu/~barrett/">Clark Barrett</a>
+    </h2>
+
+    <p><font size="5">We provide here the experimental data used in
+        our paper.
+        <!-- A version of the paper with corrected typos is available <a href="../fol_enumerative_inst.pdf">here</a>.</font> -->
+    </p>
+
+    <h2><a name="solver">Solvers</a></h2>
+
+    <p>The tarballs containing the binaries of the solvers used in our experiments: <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/cvc4.tar.gz">CVC4</a>, <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/verit.tar.gz">veriT</a>, <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/ehoh.tar.gz">Ehoh</a>, <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/leoiii-1.3.tar.gz">Leo-III</a>, <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/satallax-3.3.tar.gz">Satallax</a>    </p>
+    <p>To enable individual configurations of CVC4:</p>
+    <ul>
+        <li> Configuration <b>@cvc</b> is enabled by: <tt>--uf-ho --full-saturate-quant --ho-elim --no-ho-elim-partial --no-ho-elim-store-ax</tt></li>
+        <li> Configuration <b>@cvc-sax</b> is enabled by: <tt>--uf-ho --full-saturate-quant --ho-elim --no-ho-elim-partial</tt></li>
+        <li> Configuration <b>@cvc-ui</b> is enabled by: <tt>--uf-ho --full-saturate-quant --fs-interleave --ho-elim --no-ho-elim-partial --no-ho-elim-store-ax</tt></li>
+        <li> Configuration <b>@cvc-ui-sax</b> is enabled by: <tt>--uf-ho --full-saturate-quant --fs-interleave --ho-elim --no-ho-elim-partial</tt></li>
+        <li> Configuration <b>cvc</b> is enabled by: <tt>--uf-ho --ho-flatten-total --full-saturate-quant --no-ho-matching</tt></li>
+        <li> Configuration <b>cvc-sax</b> is enabled by: <tt>--uf-ho --ho-flatten-total --full-saturate-quant --no-ho-matching --ho-elim-store-ax</tt></li>
+        <li> Configuration <b>cvc-ui</b> is enabled by: <tt>--uf-ho --ho-flatten-total --full-saturate-quant --fs-interleave --no-ho-matching</tt></li>
+        <li> Configuration <b>cvc-ui-sax</b> is enabled by: <tt>--uf-ho --ho-flatten-total --full-saturate-quant --fs-interleave --no-ho-matching --ho-elim-store-ax</tt></li>
+        <li> Configuration <b>@cvc-fmf-sax</b> is enabled by: <tt>--uf-ho  --finite-model-find --ho-elim --no-ho-elim-partial</tt></li>
+        <li> Configuration <b>cvc-fmf</b> is enabled by: <tt>--uf-ho --finite-model-find</tt></li>
+    </ul>
+    To enable individual configurations of veriT:
+    <ul>
+        <li> Configuration <b>@vt</b> is enabled by: <tt>--prune-cnf-off --full-app --disable-print-success --disable-ackermann --disable-unit-subst-simp --ccfv-breadth</tt></li>
+        <li> Configuration <b>vt</b> is enabled by: <tt>--prune-cnf-off --extentionality --ho-matching --lfree --disable-print-success --disable-ackermann --disable-unit-subst-simp --ccfv-breadth</tt></li>
+    </ul>
+    To enable individual configurations of Ehoh:
+    <ul>
+        <li> Configuration <b>a</b> is enabled by: <tt>--delete-bad-limit=2000000000 --definitional-cnf=24 -s --free-numbers  --auto</tt></li>
+        <li> Configuration <b>as</b> is enabled by: <tt>--delete-bad-limit=2000000000 --definitional-cnf=24 -s --free-numbers  --auto-schedule --cpu-limit=60</tt></li>
+        <li> Configuration <b>b</b> is enabled by: <tt>solver options: --delete-bad-limit=2000000000 --definitional-cnf=24 -s --free-numbers  --simul-paramod --forward-context-sr --strong-destructive-er --destructive-er-aggressive --destructive-er --presat-simplify -tKBO6 -winvfreqrank -c1 -Ginvfreq -F1 -WSelectMaxLComplexAvoidPosPred -H(1.ConjectureRelativeSymbolWeight(SimulateSOS,0.5,100,100,100,100,1.5,1.5,1,1),4.ConjectureRelativeSymbolWeight(ConstPrio,0.1,100,100,100,100,1.5,1.5,1.5,1),1.FIFOWeight(PreferProcessed),1.ConjectureRelativeSymbolWeight(PreferNonGoals,0.5,100,100,100,100,1.5,1.5,1,1),4.Refinedweight(SimulateSOS,3,2,2,1.5,2,1))</tt></li>
+        <li> Configuration <b>hb</b> is enabled by: <tt>solver options: --delete-bad-limit=2000000000 --definitional-cnf=24 -s --free-numbers  --simul-paramod --forward-context-sr --strong-destructive-er --destructive-er-aggressive --destructive-er --presat-simplify -tKBO6 -winvtypefreqrank -c1 -Ginvtypefreq -F1 -WSelectMaxLComplexAvoidPosPred -H(1.ConjectureRelativeSymbolWeight(SimulateSOS,0.5,100,100,100,100,1.5,1.5,1,1.41),4.ConjectureRelativeTypeSymbolWeight(ConstPrio,0.1,100,100,100,100,1.5,1.5,1.5,1.41),1.FIFOWeight(PreferProcessed),1.ConjectureRelativeSymbolWeight(PreferNonGoals,0.5,100,100,100,100,1.5,1.5,1,1.41),4.Refinedweight(SimulateSOS,3,2,2,1.5,2,1.41))</tt></li>
+    </ul>
+
+    <h2><a name="benchmarks">Benchmarks</a></h2>
+    The TPTP THF benchmarks can be downloaded from the official <a href="http://www.tptp.org/TPTP/Distribution/TPTP-v7.2.0.tgz">TPTP website</a>. We list below the benchmarks that correspond to the subsets we used in our evaluation:
+    <ul>
+        <li>
+            TH0: <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/th0-lf-ehoh.txt">th0-lf-ehoh.txt</a>
+        </li>
+        <li>
+            <i>o</i>TH0: <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/th0-lf-boolsubterm.txt">th0-lf-boolsubterm.txt</a>
+        </li>
+        <li>
+            &lambda;<i>o</i>TH0: <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/th0-lamb.txt">th0-lamb.txt</a>
+        </li>
+    </ul>
+    The remaining benchmarks are given in the tarballs below:
+    <ul>
+        <li>
+            JD<sup>32</sup>: <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/sh_32.tar.gz">sh_32.tar.gz</a>
+        </li>
+        <li>
+            JD<sup>512</sup>: <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/sh_512.tar.gz">sh_512.tar.gz</a>
+        </li>
+        <li>
+            &lambda;<i>o</i>SH<sup>1024</sup>: <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/benzmueller.tar.gz">benzmueller.tar.gz</a>
+        </li>
+    </ul>
+
+    The HOMST equivalent of the above benchmarks in which veriT was evaluated are available here:
+    <ul>
+        <li>
+            <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/smt2-th0-lf-ehoh.tar.gz">hosmt-th0-lf-ehoh.tar.gz</a>
+        </li>
+        <li>
+            <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/smt2-th0-lf-boolsubterm.tar.gz">hosmt-th0-lf-boolsubterm.tar.gz</a>
+        </li>
+        <li>
+            <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/smt2-sh.tar.gz">hosmt-sh.tar.gz</a>
+        </li>
+    </ul>
+
+    <h2><a name="results">Results</a></h2>
+
+    <p>
+        According to the naming conventions of the benchmark sets as
+        per the tarballs and problem lists above and with the solver
+        configurations being identified in the CSVs according to the
+        mapping:
+    </p>
+
+    <center>
+        <table>
+            <thead>
+                <tr>
+                    <th width="140">Name on paper</th>
+                    <th width="160">Name on CSVs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr align="center">
+                    <td>@cvc</td>
+                    <td>cvc4-hoelim</td>
+                </tr>
+                <tr align="center">
+                    <td>@cvc-sax</td>
+                    <td>cvc4-hoelim-storeax-agg</td>
+                </tr>
+                <tr align="center">
+                    <td>@cvc-ui</td>
+                    <td>cvc4-hoelim-fsi</td>
+                </tr>
+                <tr align="center">
+                    <td>@cvc-ui-sax</td>
+                    <td>cvc4-hoelim-fsi-storeax-agg</td>
+                </tr>
+                <tr align="center">
+                    <td>@cvc-fmf-sax</td>
+                    <td>cvc4-hoelim-fmf-storeax-agg</td>
+                </tr>
+                <tr align="center">
+                    <td>cvc</td>
+                    <td>cvc4-nhom</td>
+                </tr>
+                <tr align="center">
+                    <td>cvc-sax</td>
+                    <td>cvc4-nhom-storeax-agg</td>
+                </tr>
+                <tr align="center">
+                    <td>cvc-ui</td>
+                    <td>cvc4-nhom-fsi</td>
+                </tr>
+                <tr align="center">
+                    <td>cvc-ui-sax</td>
+                    <td>cvc4-nhom-fsi-storeax-agg</td>
+                </tr>
+                <tr align="center">
+                    <td>cvc-fmf</td>
+                    <td>cvc4-fmf</td>
+                </tr>
+                <tr align="center">
+                    <td>@vt</td>
+                    <td>verit-cib-hoelim</td>
+                </tr>
+                <tr align="center">
+                    <td>vt</td>
+                    <td>verit-cib</td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+
+    the CSV files with the results are available below:
+
+    <ul>
+        <li>
+            <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/results-th0.csv">results-tptp.csv</a>
+        </li>
+        <li>
+            <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/results-sh.csv">results-sh.csv</a>
+        </li>
+        <li>
+            <a href="http://matryoshka.gforge.inria.fr/pubs/hosmt/results-benzmueller.csv">results-benzmueller.csv</a>
+        </li>
+    </ul>
+
+
+
+
+</body>
+</html>

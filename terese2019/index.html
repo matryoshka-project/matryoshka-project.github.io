@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>TeReSe 2019</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link href="../navbar-fixed-top.css" rel="stylesheet">
+  <link href="../custom.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--<link rel="icon" href="">-->
+
+  <style type="text/css">
+.sticker table {
+        border: 1px solid #666;
+        margin: 20px 80px 2px 80px;
+}
+
+table.schedule {
+  width: 100%
+}
+
+table.schedule tr {
+  background-color : #FFF;
+}
+
+table.schedule tr.break {
+  background-color : #EEE;
+}
+
+table.schedule tr.session {
+  background-color : #FFF;
+}
+
+table.schedule td:first-child {
+  width : 7em;
+  vertical-align: top;
+}
+  </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">TeReSe 2018</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#Program">Schedule</a></li>
+      <li><a href="#Venue">Venue</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="media-body">
+    <center>
+    <h1>TeReSe 2019</h1>
+<!--    <h1><font color="#1563b9">Matryoshka 2018</font></h1> -->
+    <p><font size=6><b>Term Rewriting Seminar</b></font></p>
+    <p><font size=5>18 June 2019, Amsterdam, The Netherlands</font></p>
+    </center>
+  </div>
+</div>
+
+
+<div class="container" id="Aim">
+    <p>
+      The TeReSe meetings started with a festive meeting in Amsterdam celebrating
+      the publication of the TeReSe book. Traditionally, the format of this meeting
+      is an afternoon of presentations with room for discussions over dinner.
+      Previous meetings were in
+      <a href="http://www.cs.vu.nl/~terese/bookday.html">Amsterdam</a>,
+      Eindhoven, Utrecht, Eindhoven,
+      <a href="http://verify.rwth-aachen.de/psk/terese/">Aachen</a>,
+      <a href="http://www.cs.vu.nl/~terese/terese060622.html">Amsterdam</a>,
+      <a href="http://www.phil.uu.nl/~oostrom/TeReSe/">Utrecht</a>,
+      <a href="http://www.win.tue.nl/~hzantema/terese.html">Eindhoven</a>,
+      <a href="http://verify.rwth-aachen.de/psk/terese07/">Aachen</a>,
+      <a href="http://www.cs.vu.nl/~tcs/seminar/terese20080624.html">Amsterdam</a>,
+      Nijmegen,
+      <a href="http://www.phil.uu.nl/~clemens/TeReSe2009.html">Utrecht</a>,
+      <a href="http://verify.rwth-aachen.de/fuhs/terese10/">Aachen</a>,
+      <a href=https://www.few.vu.nl/~tcs/seminar/terese20101118.html">Amsterdam</a>,
+      Eindhoven, Utrecht,
+      <a href="https://verify.rwth-aachen.de/stroeder/terese12/">Aachen</a>,
+      <a href="https://www.few.vu.nl/~tcs/seminar/terese20121114.html">Amsterdam</a>,
+      Nijmegen,
+      <a href="https://verify.rwth-aachen.de/jhensel/terese16/">Aachen</a>,
+      <a href="http://www.win.tue.nl/~hzantema/terese.html">Eindhoven</a>,
+      and
+      <a href="https://www.cs.ru.nl/~cynthiakop/terese18.html">Nijmegen</a>.
+  
+    <p>
+      Please send an email to <a href="http://www.cs.vu.nl/~abp290/">Alexander
+      Bentkamp</a> if you would like to participate.
+  </div>
+
+<div class="container" id="Program">
+    <div class="page-header">
+      <h2>Tentative Schedule</h2>
+    </div>
+  
+    <table class="schedule">
+  
+      <tr class="session"><td></td><td><p><!--Session 1--></p></td></tr>
+  
+        <tr class="break"><td>13:00 &ndash; 13:15</td><td><p><b>Arrival</b></p></td></tr>
+  
+        <tr>
+          <td>13:15 &ndash; 13:50</td>
+          <td>
+            <p>
+              <b>Reasoning about one-sided and two-sided infinite sequences.</b><br>
+              Hans Zantema<br>
+              <a data-toggle="collapse" href="#collapseZantema" role="button" aria-expanded="false" aria-controls="collapseZantema">
+                (abstract)
+              </a>
+            </p>
+            <p class="collapse" id="collapseZantema">
+                We recapitulate first order inductive theorem proving in a
+                general setting without requirements on the shape of the
+                equations involved. We show how this applies to settings in
+                which the terms on which induction is applied do not have a
+                unique representation as constructor terms. In this way we can
+                do induction over the integers rather than over the natural
+                numbers. We show how this induction mechanism can be applied to
+                prove equality of infinite sequences, and how this is closely
+                related to circular coinduction. As one-sided sequences can be
+                defined as mappings from natural numbers to some basic type, we
+                can also consider two-sided infinite sequences being mappings
+                from integers to the base type, and apply the induction
+                principle over the integers to prove equality of these. In
+                particular we consider a two-sided variant of morphic sequences.
+              </p>
+          </td>
+        </tr>
+  
+        <tr>
+          <td>13:50 &ndash; 14:25</td>
+          <td>
+            <p>
+              <b>Proving Non-Termination via Loop Acceleration</b><br>
+              Florian Frohn<br>
+              Joint work with Jürgen Giesl<br>
+              <a data-toggle="collapse" href="#collapseFrohn" role="button" aria-expanded="false" aria-controls="collapseFrohn">
+                (abstract)
+              </a>
+            </p>
+            <p class="collapse" id="collapseFrohn">
+                We present a new approach to prove non-termination of integer
+                programs. It is based on a novel under-approximating loop
+                acceleration technique, a new sufficient criterion to detect
+                non-termination, and an SMT encoding to search for invariants.
+                To evaluate our technique, we implemented it in our tool LoAT. A
+                comparison with other leading termination analyzers for integer
+                programs shows that it is competitive and can prove
+                non-termination of some programs where existing tools fail. 
+            </p>
+          </td>
+        </tr>
+  
+  
+        <tr>
+          <td>14:25 &ndash; 15:00</td>
+          <td>
+            <p>
+              <b>Higher-order Polymorphic Polynomials</b><br>
+              Cynthia Kop <br>
+              Joint work with Łukasz Czajka (also to be presented at FSCD 2019)<br>
+              <a data-toggle="collapse" href="#collapseKop" role="button" aria-expanded="false" aria-controls="collapseKop">
+                (abstract)
+              </a>
+            </p>
+            <p class="collapse" id="collapseKop">
+                We generalise the termination method of higher-order polynomial interpretations to a setting with
+                impredicative polymorphism. Instead of using weakly monotonic functionals, we interpret terms in
+                a suitable extension of System Fω. This enables a direct interpretation of rewrite rules which make
+                essential use of impredicative polymorphism. In addition, our generalisation eases the applicability
+                of the method in the non-polymorphic setting by allowing for the encoding of inductive data types.
+                As an illustration of the potential of our method, we prove termination of a substantial fragment of
+                full intuitionistic second-order propositional logic with permutative conversions.
+            </p>
+          </td>
+        </tr>
+  
+  
+      <tr class="break"><td>15:00 &ndash; 15:30</td><td><p><b>Coffee break</b></p></td></tr>
+  
+      <tr class="session"><td></td><td><p><!--Session 2--></p></td></tr>
+  
+      <tr>
+        <td>15:30 &ndash; 16:05</td>
+        <td>
+          <p>
+            <b>Constant Runtime Complexity of Term Rewriting is Semi-Decidable  </b><br>
+            Jürgen Giesl<br>
+            Joint work with Florian Frohn<br>
+            <a data-toggle="collapse" href="#collapseGiesl" role="button" aria-expanded="false" aria-controls="collapseGiesl">
+              (abstract)
+            </a>
+          </p>
+          <p class="collapse" id="collapseGiesl">
+              We show that it is semi-decidable whether the runtime complexity
+              of a term rewrite system is constant. Our semi-decision procedure
+              exploits that constant runtime complexity is equivalent to
+              termination of a restricted form of narrowing, which can be
+              examined by considering finitely many start terms. We implemented
+              our semi-decision procedure in the tool AProVE to show its
+              efficiency and its success for systems where state-of-the-art
+              complexity analysis tools fail.
+          </p>
+        </td>
+      </tr>
+  
+        
+      <tr>
+        <td>16:05 &ndash; 16:40</td>
+        <td>
+          <p>
+            <b>The Embedding Path Order for Lambda-Free Higher-Order Terms</b><br>
+            Alexander Bentkamp<br>
+            <a data-toggle="collapse" href="#collapseBentkamp" role="button" aria-expanded="false" aria-controls="collapseBentkamp">
+              (abstract)
+            </a>
+          </p>
+          <p class="collapse" id="collapseBentkamp">
+            I will present a variant of RPO for higher-order terms without lambda-abstractions.
+            Being a ground-total simplification order, it appears promising for higher-order superposition.
+            I developed an algorithm to compute the order reasonably fast and implemented it in the Zipperposition theorem prover.
+          </p>
+        </td>
+      </tr>
+  
+        
+      <tr class="break">
+        <td>16:40 &ndash; 17:00</td>
+        <td>
+          <p>
+            <b>TeReSe Business Meeting</b>
+        </td>
+      </tr>
+
+    <tr><td colspan="2"><br> Afterwards there will be a joint TeReSe dinner at <a href="https://www.wagamama.nl/restaurants/zuidplein">wagamama</a> close to the Amsterdam Zuid station within walking distance of the university.</td></tr>
+    
+    </table>
+  
+  </div>
+
+
+<div class="container" id="Venue">
+  <div class="page-header">
+    <h2>Venue</h2>
+  </div>
+
+  <p>
+The workshop will take place on 18 June 2019 in the BelleVUe
+building of the Vrije Universiteit Amsterdam, room BV-0H36. The VU is easily accessible on
+foot from the Amsterdam Zuid station.
+See <a href="https://www.vu.nl/en/about-vu-amsterdam/contact-info-and-route/route-description/index.aspx">How to get to VU Amsterdam</a>
+for details.
+
+<p>&nbsp;
+
+<p><center>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1880.5865496093102!2d4.8644137019378295!3d52.33393069623825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c60b8ce0c44af1%3A0xf654ac954fe9961d!2sAdvalvas!5e0!3m2!1sen!2snl!4v1556786996985!5m2!1sen!2snl" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </center>
+
+<br>
+
+<br>
+
+<br>
+</div>
+
+
+
+
+<div class="container" id="Acknowledgment">
+  <!--<p>
+  <b>Acknowledgment:</b> We want to thank Caroline Waij for helping with the organization.
+  This workshop is partially supported by the ERC Starting Grant 2016 <a
+  href="../index.html">Matryoshka</a> (grant agreement No.
+  <a href="http://cordis.europa.eu/project/rcn/207590_en.html">713999</a>).
+
+  <br>
+  <br>
+  <br>
+    <div class="sticker">
+      <table>
+        <tbody><tr>
+          <td>&nbsp;
+          <td><img src="http://ec.europa.eu/research/participants/docs/h2020-funding-guide/imgs/eu-flag.jpg" width="50px" border="0" name="European Union flag"></td>
+          <td>&nbsp;&nbsp;&nbsp;
+          <td>This project has received funding from the European Union's Horizon 2020 research and innovation program
+            under grant agreement No. 713999.&nbsp;&nbsp;</td>
+        </tr>
+      </tbody></table>
+    </div>-->
+
+  <br>
+  <br>
+  <br>
+
+</div>
+
+</body>
+
+</html>

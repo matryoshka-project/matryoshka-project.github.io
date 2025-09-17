@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html><head>
+    <title>Revisiting Enumerative Instantiation</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="author" content="Andrew Reynolds, Haniel Barbosa, Pascal Fontaine" />
+    <meta name="description" content="Experimental data" />
+</head>
+<style type="text/css">body{margin:40px
+    auto;;line-height:1.6;font-size:18px;color:#444;padding:0
+    100px}h1,h2,h3{line-height:1.2}</style>
+<body>
+    <h1>Revisiting Enumerative Instantiation</h1>
+
+    <h2>
+        <a href="http://homepage.divms.uiowa.edu/~ajreynol/">Andrew Reynolds</a>,
+        <a href="https://members.loria.fr/HBarbosa/">Haniel Barbosa</a>,
+        and <a href="https://members.loria.fr/PFontaine/">Pascal Fontaine</a>
+    </h2>
+
+    <p><font size="5">We provide here the experimental data used in
+    our paper. A version of the paper with corrected typos is
+    available <a href="../fol_enumerative_inst.pdf">here</a>.</font></p>
+
+    <h2><a name="solver">Solvers</a></h2>
+
+    <p>The .zip containing the binary of CVC4 used in our experiments can be downloaded here: <a href="cvc4.zip">cvc4</a>.
+        The latest version of CVC4 can be downloaded here: <a href="http://cvc4.cs.stanford.edu/downloads/" target="_blank">CVC4</a>.
+        The .tgz containing the binary of Z3 used in our experiments can be downloaded here: <a href="./z3.tar.tgz">z3</a>.
+        <br>
+        <br>
+        To enable individual configurations of CVC4:
+        <ul>
+            <li> Configuration <b>u</b> is enabled by <tt>--sort-inference --no-e-matching --full-saturate-quant</tt>.</li>
+            <li> Configuration <b>e;u</b> is enabled by <tt>--sort-inference --full-saturate-quant</tt>.</li>
+            <li> Configuration <b>e+u</b> is enabled by <tt>--sort-inference --fs-interleave --full-saturate-quant</tt>.</li>
+            <li> Configuration <b>e</b> is enabled by <tt>--sort-inference</tt>.</li>
+            <li> Configuration <b>m</b> is enabled by <tt>--sort-inference --finite-model-find --mbqi-one-inst-per-round --uf-ss=none</tt>.</li>
+            <li> Configuration <b>e;m</b> is enabled by <tt>--sort-inference --finite-model-find --mbqi-one-inst-per-round --uf-ss=none --fmf-inst-engine</tt>.</li>
+            <li> Configuration <b>e+m</b> is enabled by <tt>--sort-inference --finite-model-find --mbqi-one-inst-per-round --uf-ss=none --fmf-inst-engine --mbqi-interleave --inst-when=last-call</tt>.</li>
+        </ul>
+
+        To enable individual configurations of Z3:
+        <ul>
+            <li> Configuration <b>z3 m</b> is enabled by
+                <ul>
+                    <li>for SMT-LIB:
+                        <tt>auto_config=false smt.ematching=false -smt2</tt></li>
+                    <li>for TPTP: <tt>-auto_config:false -smt.ematching:false -file:</tt></li>
+                </ul></li>
+
+            <li> Configuration <b>z3 e</b> is enabled by
+                <ul>
+                    <li>for SMT-LIB:
+                        <tt>auto_config=false smt.mbqi=false -smt2</tt></li>
+                    <li>for TPTP: <tt>-auto_config:false -smt.mbqi:false -file:</tt></li>
+            </li>
+                </ul>
+                <li> Configuration <b>z3 e;m</b> is enabled by
+                    <ul>
+                        <li>for SMT-LIB:
+                            <tt>-smt2</tt></li>
+                        <li>for TPTP: <tt>-file:</tt></li>
+                    </ul>
+</li>
+        </ul>
+
+    </p>
+
+
+    <h2><a name="benchmarks">Benchmarks</a></h2>
+
+    <p>
+        <ul>
+            <li>The SMT-LIB benchmarks can be found <a href="https://clc-gitlab.cs.uiowa.edu:2443/SMT-LIB-benchmarks/" target="_blank">here</a>.</li>
+            <li>The TPTP benchmarks can be found <a href="http://www.cs.miami.edu/~tptp/TPTP/Distribution/TPTP-v7.0.0.tgz">here</a>. We used the benchmarks of the CNF and FOF sublibraries.</li>
+        </ul>
+    </p>
+
+    <h2><a name="results">Results</a></h2>
+
+    <p>
+        Our evaluation used the StarExec cluster for evaluation <a href="https://www.starexec.org" target="_blank">https://www.starexec.org</a>. The experiments on SMT-LIB can be found <a href="https://www.starexec.org/starexec/secure/details/job.jsp?id=24496" target="_blank">here</a> and on TPTP <a href="https://www.starexec.org/starexec/secure/details/job.jsp?id=24495" target="_blank">here</a>.
+        We provide a <a href="../../../../papers/fol_enumerative_inst/exps/data.xlsx">spreadsheet</a> containing detailed results of the experiments.
+        <!-- The spreadsheet has blah blah blah -->
+    </p>
+
+</body>
+</html>
